@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eqamat Al-Haramain - Moroccan Hotel</title>
+    <meta name="description" content="Experience authentic Moroccan hospitality at Eqamat Al-Haramain. Comfortable apartments in the center of Zaio.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">إقامة الحرمين</h1>
+                <p class="logo-subtitle">Eqamat Al-Haramain</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="rooms.html" class="nav-link" data-en="Rooms" data-ar="الغرف">Rooms</a></li>
+                <li><a href="contact.html" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text">العربية</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 70vh;">
+        <div class="hero-content">
+            <h1 class="hero-title" data-en="Welcome to Eqamat Al-Haramain" data-ar="مرحباً بكم في إقامة الحرمين">Welcome to Eqamat Al-Haramain</h1>
+            <p class="hero-tagline" data-en="Your home away from home in Zaio" data-ar="بيتك الثاني في زايو">Your home away from home in Zaio</p>
+            <p class="hero-subtitle" data-en="Eqamat Al-Haramain offers 9 comfortable apartments in the center of Zaio. Whether you are visiting for business or leisure, our hotel provides a welcoming atmosphere and modern amenities for a pleasant stay." data-ar="إقامة الحرمين تقدم 9 شقق مريحة في وسط مدينة زايو. سواء كنت تزور المدينة للعمل أو للترفيه، يوفر فندقنا أجواء مرحبة ووسائل راحة حديثة لإقامة ممتعة.">Eqamat Al-Haramain offers 9 comfortable apartments in the center of Zaio. Whether you are visiting for business or leisure, our hotel provides a welcoming atmosphere and modern amenities for a pleasant stay.</p>
+            <div class="hero-buttons">
+                <a href="rooms.html" class="btn btn-primary" data-en="View Our Apartments" data-ar="شاهد شققنا">View Our Apartments</a>
+                <a href="contact.html" class="btn btn-secondary" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="placeholder-image">
+                <i class="fas fa-hotel"></i>
+                <p data-en="Hotel Image" data-ar="صورة الفندق">Hotel Image</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title" data-en="Why Stay With Us?" data-ar="لماذا تختارنا؟">Why Stay With Us?</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-bed"></i>
+                    <span data-en="9 Comfortable Apartments" data-ar="9 شقق مريحة">9 Comfortable Apartments</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span data-en="Central Location in Zaio" data-ar="موقع مركزي في زايو">Central Location in Zaio</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-wallet"></i>
+                    <span data-en="Affordable Prices" data-ar="أسعار مناسبة">Affordable Prices</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-wifi"></i>
+                    <span data-en="Free WiFi" data-ar="واي فاي مجاني">Free WiFi</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-snowflake"></i>
+                    <span data-en="Air Conditioning" data-ar="مكيف هواء">Air Conditioning</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-user-friends"></i>
+                    <span data-en="Family Friendly" data-ar="مناسب للعائلات">Family Friendly</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-phone"></i>
+                    <span data-en="24/7 Contact Availability" data-ar="التواصل متاح 24/7">24/7 Contact Availability</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-en="Ready to Book Your Stay?" data-ar="هل أنت مستعد لحجز إقامتك؟">Ready to Book Your Stay?</h2>
+                <p class="cta-description" data-en="Contact us directly to reserve your apartment or ask any questions." data-ar="تواصل معنا مباشرة لحجز شقتك أو للاستفسار عن أي شيء.">
+                    Contact us directly to reserve your apartment or ask any questions.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+                    <a href="rooms.html" class="btn btn-secondary" data-en="View Apartments" data-ar="شاهد الشقق">View Apartments</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3 data-en="Call Us" data-ar="اتصل بنا">Call Us</h3>
+                    <p data-en="Direct booking by phone" data-ar="الحجز المباشر عبر الهاتف">Direct booking by phone</p>
+                    <a href="contact.html" class="info-link" data-en="View Number" data-ar="عرض الرقم">View Number</a>
+                </div>
+                <div class="info-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3 data-en="WhatsApp" data-ar="واتساب">WhatsApp</h3>
+                    <p data-en="Quick communication" data-ar="تواصل سريع">Quick communication</p>
+                    <a href="contact.html" class="info-link" data-en="Message Us" data-ar="راسلنا">Message Us</a>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3 data-en="Location" data-ar="الموقع">Location</h3>
+                    <p data-en="Find us on Google Maps" data-ar="اعثر علينا على خرائط جوجل">Find us on Google Maps</p>
+                    <a href="https://www.google.com/maps/place/34.9436487,-2.7526318" class="info-link" data-en="View Map" data-ar="عرض الخريطة" target="_blank" rel="noopener">View Map</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>إقامة الحرمين</h3>
+                    <p data-en="Moroccan Hospitality" data-ar="الضيافة المغربية">Moroccan Hospitality</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="rooms.html" data-en="Rooms" data-ar="الغرف">Rooms</a>
+                    <a href="contact.html" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="tel:+212670959747" class="social-link"><i class="fas fa-phone"></i></a>
+                    <a href="https://wa.me/212670959747" class="social-link" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eqamat Al-Haramain. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

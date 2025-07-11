@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Rooms - Eqamat Al-Haramain</title>
+    <meta name="description" content="Discover our 9 Moroccan apartments at Eqamat Al-Haramain. Each room offers comfort and charm.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">إقامة الحرمين</h1>
+                <p class="logo-subtitle">Eqamat Al-Haramain</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="rooms.html" class="nav-link active" data-en="Rooms" data-ar="الغرف">Rooms</a></li>
+                <li><a href="contact.html" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text">العربية</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" data-en="Our Apartments" data-ar="شققنا">Our Apartments</h1>
+            <p class="page-subtitle" data-en="Discover our 9 Moroccan apartments, each offering comfort and charm" data-ar="اكتشف شققنا المغربية التسع، كل منها يوفر راحة ودفء.">Discover our 9 Moroccan apartments, each offering comfort and charm</p>
+        </div>
+    </section>
+
+    <!-- Rooms Grid -->
+    <section class="rooms-section">
+        <div class="container">
+            <div class="rooms-grid">
+                <!-- Apartment 1 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 1" data-ar="الشقة 1">Apartment 1</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Suite" data-ar="جناح">Suite</h3>
+                        <p class="room-description" data-en="Spacious apartment with a comfortable bedroom, living area, and window with a city view. All apartments have the same view." data-ar="شقة واسعة بغرفة نوم مريحة ومنطقة معيشة ونافذة بإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Spacious apartment with a comfortable bedroom, living area, and window with a city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="1st Floor" data-ar="الطابق الأول">1st Floor</span>
+                            <span class="feature-tag" data-en="1 Bedroom" data-ar="غرفة نوم واحدة">1 Bedroom</span>
+                            <span class="feature-tag" data-en="Living Room" data-ar="غرفة معيشة">Living Room</span>
+                            <span class="feature-tag" data-en="Kitchen" data-ar="مطبخ">Kitchen</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="1" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 2 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 2" data-ar="الشقة 2">Apartment 2</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Family Apartment" data-ar="شقة عائلية">Family Apartment</h3>
+                        <p class="room-description" data-en="Perfect for families, this apartment offers multiple bedrooms, a spacious common area, and a window with a city view. All apartments have the same view." data-ar="مثالية للعائلات، هذه الشقة توفر غرف نوم متعددة ومنطقة مشتركة واسعة ونافذة بإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Perfect for families, this apartment offers multiple bedrooms, a spacious common area, and a window with a city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="1st Floor" data-ar="الطابق الأول">1st Floor</span>
+                            <span class="feature-tag" data-en="2 Bedrooms" data-ar="غرفتي نوم">2 Bedrooms</span>
+                            <span class="feature-tag" data-en="Large Living Room" data-ar="غرفة معيشة كبيرة">Large Living Room</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="2" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 3 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 3" data-ar="الشقة 3">Apartment 3</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Studio" data-ar="استوديو">Studio</h3>
+                        <p class="room-description" data-en="Compact and comfortable studio apartment ideal for solo travelers or couples, with a window and city view. All apartments have the same view." data-ar="استوديو مدمج ومريح مثالي للمسافرين الفرديين أو الأزواج، مع نافذة وإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Compact and comfortable studio apartment ideal for solo travelers or couples, with a window and city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="2nd Floor" data-ar="الطابق الثاني">2nd Floor</span>
+                            <span class="feature-tag" data-en="Studio" data-ar="استوديو">Studio</span>
+                            <span class="feature-tag" data-en="Kitchenette" data-ar="مطبخ صغير">Kitchenette</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="3" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 4 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 4" data-ar="الشقة 4">Apartment 4</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Deluxe Suite" data-ar="جناح فاخر">Deluxe Suite</h3>
+                        <p class="room-description" data-en="A spacious apartment featuring premium amenities, elegant design, and a window with a city view. All apartments have the same view." data-ar="شقة واسعة مع مرافق فاخرة وتصميم أنيق ونافذة بإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            A spacious apartment featuring premium amenities, elegant design, and a window with a city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="2nd Floor" data-ar="الطابق الثاني">2nd Floor</span>
+                            <span class="feature-tag" data-en="Master Bedroom" data-ar="غرفة نوم رئيسية">Master Bedroom</span>
+                            <span class="feature-tag" data-en="Luxury Bathroom" data-ar="حمام فاخر">Luxury Bathroom</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                            <i class="fas fa-hot-tub" title="Jacuzzi"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="4" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 5 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 5" data-ar="الشقة 5">Apartment 5</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Garden View Apartment" data-ar="شقة بإطلالة على الحديقة">Garden View Apartment</h3>
+                        <p class="room-description" data-en="Peaceful apartment with a window and city view. All apartments have the same view." data-ar="شقة هادئة مع نافذة وإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Peaceful apartment with a window and city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="3rd Floor" data-ar="الطابق الثالث">3rd Floor</span>
+                            <span class="feature-tag" data-en="1 Bedroom" data-ar="غرفة نوم واحدة">1 Bedroom</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="5" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 6 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 6" data-ar="الشقة 6">Apartment 6</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Family Suite" data-ar="جناح عائلي">Family Suite</h3>
+                        <p class="room-description" data-en="Large family apartment with modern comforts and a window with a city view. All apartments have the same view." data-ar="شقة عائلية كبيرة مع وسائل راحة حديثة ونافذة بإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Large family apartment with modern comforts and a window with a city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="3rd Floor" data-ar="الطابق الثالث">3rd Floor</span>
+                            <span class="feature-tag" data-en="3 Bedrooms" data-ar="3 غرف نوم">3 Bedrooms</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="6" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 7 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 7" data-ar="الشقة 7">Apartment 7</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Couple's Retreat" data-ar="ملاذ للأزواج">Couple's Retreat</h3>
+                        <p class="room-description" data-en="Romantic apartment perfect for couples seeking privacy and comfort, with a window and city view. All apartments have the same view." data-ar="شقة رومانسية مثالية للأزواج الذين يبحثون عن الخصوصية والراحة، مع نافذة وإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Romantic apartment perfect for couples seeking privacy and comfort, with a window and city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="4th Floor" data-ar="الطابق الرابع">4th Floor</span>
+                            <span class="feature-tag" data-en="1 Bedroom" data-ar="غرفة نوم واحدة">1 Bedroom</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="7" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 8 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 8" data-ar="الشقة 8">Apartment 8</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Business Suite" data-ar="جناح الأعمال">Business Suite</h3>
+                        <p class="room-description" data-en="Functional apartment with workspace and all amenities needed for business travelers, with a window and city view. All apartments have the same view." data-ar="شقة عملية مع مساحة عمل وجميع المرافق اللازمة لرجال الأعمال، مع نافذة وإطلالة على المدينة. جميع الشقق لها نفس الإطلالة.">
+                            Functional apartment with workspace and all amenities needed for business travelers, with a window and city view. All apartments have the same view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="4th Floor" data-ar="الطابق الرابع">4th Floor</span>
+                            <span class="feature-tag" data-en="Work Desk" data-ar="مكتب عمل">Work Desk</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="8" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+
+                <!-- Apartment 9 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-bed"></i>
+                            <p data-en="Apartment 9" data-ar="الشقة 9">Apartment 9</p>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title" data-en="Deck Apartment" data-ar="شقة السطح">Deck Apartment</h3>
+                        <p class="room-description" data-en="A unique apartment located on the 5th floor deck (sath), offering privacy and a special view." data-ar="شقة مميزة تقع في السطح (الطابق الخامس)، توفر خصوصية وإطلالة خاصة.">
+                            A unique apartment located on the 5th floor deck, offering privacy and a special view.
+                        </p>
+                        <div class="room-features">
+                            <span class="feature-tag" data-en="5th Floor (Deck)" data-ar="السطح (الطابق الخامس)">5th Floor (Deck)</span>
+                        </div>
+                        <div class="room-amenities">
+                            <i class="fas fa-wifi" title="WiFi"></i>
+                            <i class="fas fa-snowflake" title="Air Conditioning"></i>
+                            <i class="fas fa-tv" title="TV"></i>
+                            <i class="fas fa-bath" title="Private Bathroom"></i>
+                        </div>
+                        <button class="view-photos-btn" data-apartment="9" data-en="View Photos" data-ar="عرض الصور">View Photos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>إقامة الحرمين</h3>
+                    <p data-en="Moroccan Hospitality" data-ar="الضيافة المغربية">Moroccan Hospitality</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="rooms.html" data-en="Rooms" data-ar="الغرف">Rooms</a>
+                    <a href="contact.html" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eqamat Al-Haramain. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Apartment Gallery Modal -->
+    <div id="apartment-gallery-modal" class="gallery-modal" style="display:none;">
+        <div class="gallery-modal-content">
+            <span class="gallery-modal-close" id="gallery-modal-close">&times;</span>
+            <div id="gallery-modal-title" class="gallery-modal-title"></div>
+            <div id="gallery-modal-images" class="gallery-modal-images">
+                <!-- Images will be injected here -->
+            </div>
+            <div class="gallery-modal-nav">
+                <button id="gallery-prev" class="gallery-nav-btn">&#8592;</button>
+                <button id="gallery-next" class="gallery-nav-btn">&#8594;</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Apartment images placeholder data
+        const apartmentImages = {
+            1: ["https://via.placeholder.com/600x400?text=Apartment+1+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+1+Photo+2"],
+            2: ["https://via.placeholder.com/600x400?text=Apartment+2+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+2+Photo+2"],
+            3: ["https://via.placeholder.com/600x400?text=Apartment+3+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+3+Photo+2"],
+            4: ["https://via.placeholder.com/600x400?text=Apartment+4+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+4+Photo+2"],
+            5: ["https://via.placeholder.com/600x400?text=Apartment+5+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+5+Photo+2"],
+            6: ["https://via.placeholder.com/600x400?text=Apartment+6+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+6+Photo+2"],
+            7: ["https://via.placeholder.com/600x400?text=Apartment+7+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+7+Photo+2"],
+            8: ["https://via.placeholder.com/600x400?text=Apartment+8+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+8+Photo+2"],
+            9: ["https://via.placeholder.com/600x400?text=Apartment+9+Photo+1", "https://via.placeholder.com/600x400?text=Apartment+9+Photo+2"]
+        };
+        let currentGallery = {apartment: 1, index: 0};
+
+        function openGalleryModal(apartment) {
+            currentGallery.apartment = apartment;
+            currentGallery.index = 0;
+            const modal = document.getElementById('apartment-gallery-modal');
+            const title = document.getElementById('gallery-modal-title');
+            const imagesDiv = document.getElementById('gallery-modal-images');
+            title.textContent = document.querySelector('.room-card [data-apartment="'+apartment+'" ]').closest('.room-card').querySelector('.room-title').textContent;
+            imagesDiv.innerHTML = '';
+            apartmentImages[apartment].forEach((src, i) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'gallery-modal-img';
+                img.style.display = i === 0 ? 'block' : 'none';
+                imagesDiv.appendChild(img);
+            });
+            modal.style.display = 'block';
+        }
+        function closeGalleryModal() {
+            document.getElementById('apartment-gallery-modal').style.display = 'none';
+        }
+        function showGalleryImage(index) {
+            const images = document.querySelectorAll('.gallery-modal-img');
+            images.forEach((img, i) => {
+                img.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        document.querySelectorAll('.view-photos-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openGalleryModal(this.getAttribute('data-apartment'));
+            });
+        });
+        document.getElementById('gallery-modal-close').onclick = closeGalleryModal;
+        document.getElementById('gallery-prev').onclick = function() {
+            if (currentGallery.index > 0) {
+                currentGallery.index--;
+                showGalleryImage(currentGallery.index);
+            }
+        };
+        document.getElementById('gallery-next').onclick = function() {
+            if (currentGallery.index < apartmentImages[currentGallery.apartment].length - 1) {
+                currentGallery.index++;
+                showGalleryImage(currentGallery.index);
+            }
+        };
+    </script>
+</body>
+</html> 

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Eqamat Al-Haramain</title>
+    <meta name="description" content="Contact Eqamat Al-Haramain for bookings and inquiries. Find our location, phone number, and WhatsApp contact.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">إقامة الحرمين</h1>
+                <p class="logo-subtitle">Eqamat Al-Haramain</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="rooms.html" class="nav-link" data-en="Rooms" data-ar="الغرف">Rooms</a></li>
+                <li><a href="contact.html" class="nav-link active" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text">العربية</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</h1>
+            <p class="page-subtitle" data-en="Get in touch with us for bookings and inquiries. We're here to help you plan your perfect stay." data-ar="تواصل معنا للحجوزات والاستفسارات. نحن هنا لمساعدتك في تخطيط إقامتك المثالية.">
+                Get in touch with us for bookings and inquiries. We're here to help you plan your perfect stay.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Phone Contact -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 data-en="Call Us" data-ar="اتصل بنا">Call Us</h3>
+                    <p data-en="Direct booking by phone" data-ar="الحجز المباشر عبر الهاتف">Direct booking by phone</p>
+                    <div class="contact-details">
+                        <a href="tel:+212670959747" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            <span>0670959747</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Contact -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 data-en="WhatsApp" data-ar="واتساب">WhatsApp</h3>
+                    <p data-en="Quick communication and instant replies" data-ar="تواصل سريع وردود فورية">Quick communication and instant replies</p>
+                    <div class="contact-details">
+                        <a href="https://wa.me/212670959747" class="contact-link whatsapp-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-en="Send Message" data-ar="إرسال رسالة">Send Message</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 data-en="Visit Us" data-ar="زرنا">Visit Us</h3>
+                    <p data-en="Find us in the center of Zaio" data-ar="اعثر علينا في وسط مدينة زايو">Find us in the center of Zaio</p>
+                    <div class="contact-details">
+                        <div class="address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a href="https://www.google.com/maps/place/34.9436487,-2.7526318" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">
+                                <span data-en="Zaio, Morocco" data-ar="زايو، المغرب">Zaio, Morocco</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-en="Business Hours" data-ar="ساعات العمل">Business Hours</h3>
+                    <p data-en="Check-in and check-out at 12:00 PM. For any needs or questions, you can contact us 24/7." data-ar="تسجيل الوصول والمغادرة الساعة 12:00 ظهراً. لأي احتياجات أو استفسارات، يمكنكم التواصل معنا في أي وقت على مدار الساعة.">Check-in and check-out at 12:00 PM. For any needs or questions, you can contact us 24/7.</p>
+                    <div class="contact-details">
+                        <div class="hours">
+                            <div class="hours-item">
+                                <span data-en="Check-in:" data-ar="تسجيل الوصول:">Check-in:</span>
+                                <span data-en="12:00 PM" data-ar="12:00 ظهراً">12:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span data-en="Check-out:" data-ar="المغادرة:">Check-out:</span>
+                                <span data-en="12:00 PM" data-ar="12:00 ظهراً">12:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span data-en="Contact available 24/7" data-ar="التواصل متاح 24/7">Contact available 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title" data-en="Find Us" data-ar="اعثر علينا">Find Us</h2>
+            <p class="map-description" data-en="Located in the center of Zaio, our hotel is easily accessible and close to all city amenities." data-ar="يقع فندقنا في وسط مدينة زايو، ويمكن الوصول إليه بسهولة وقريب من جميع مرافق المدينة.">
+                Located in the center of Zaio, our hotel is easily accessible and close to all city amenities.
+            </p>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13082.067977818982!2d-2.7526318128418192!3d34.9436487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd77968aca778743%3A0x6fd1f0cb20b4c24c!2z2YXYs9is2K8g2KfZhNit2LPZhiDYp9mE2KvYp9mG2Yo!5e0!3m2!1sen!2snl!4v1752273504630!5m2!1sen!2snl" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>إقامة الحرمين</h3>
+                    <p data-en="Moroccan Hospitality" data-ar="الضيافة المغربية">Moroccan Hospitality</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="rooms.html" data-en="Rooms" data-ar="الغرف">Rooms</a>
+                    <a href="contact.html" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://wa.me/212670959747" class="social-link" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="tel:+212670959747" class="social-link"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eqamat Al-Haramain. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
