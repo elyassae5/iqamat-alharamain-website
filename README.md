@@ -1,27 +1,35 @@
-# إقامة الحرمين (Eqamat Al-Haramain) - Moroccan Hotel Website
+# إقامة الحرمين (Iqamat Al-Haramain) - Moroccan Hotel Website
 
-A beautiful, responsive static website for a Moroccan hotel showcasing 9 apartments with authentic hospitality.
+A beautiful, responsive static website for a Moroccan hotel in Zaio, showcasing 9 comfortable apartments with authentic hospitality.
 
 ## 🌟 Features
 
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- **Bilingual Support**: Arabic and English language switching
+- **Bilingual Support**: Arabic and English language switching with RTL support
 - **Modern UI**: Clean, professional design with Moroccan-inspired color scheme
-- **Interactive Gallery**: Photo gallery with filtering and lightbox functionality
 - **Contact Integration**: WhatsApp and phone contact options
-- **Google Maps Ready**: Placeholder for easy Google Maps integration
+- **Google Maps Integration**: Direct link to hotel location
 - **SEO Optimized**: Semantic HTML and meta tags for better search visibility
 
 ## 📁 File Structure
 
 ```
 cursor-eqamat-alharamain/
-├── index.html          # Homepage
+├── index.html          # Homepage with hero section and features
 ├── rooms.html          # Rooms/Apartments page
-├── gallery.html        # Photo gallery
 ├── contact.html        # Contact information and form
 ├── style.css           # Main stylesheet
 ├── script.js           # JavaScript functionality
+├── images/             # Image assets for apartments
+│   ├── apartment1/     # Images for apartment 1
+│   ├── apartment2/     # Images for apartment 2
+│   ├── apartment3/     # Images for apartment 3
+│   ├── apartment4/     # Images for apartment 4
+│   ├── apartment5/     # Images for apartment 5
+│   ├── apartment6/     # Images for apartment 6
+│   ├── apartment7/     # Images for apartment 7
+│   ├── apartment8/     # Images for apartment 8
+│   └── apartment9/     # Images for apartment 9
 └── README.md           # This file
 ```
 
@@ -37,10 +45,11 @@ cursor-eqamat-alharamain/
 ### 1. Hotel Information
 
 **Update in all HTML files:**
-- Hotel name: "إقامة الحرمين" / "Eqamat Al-Haramain"
-- Phone number: Replace `+212 XXX XXX XXX` with actual number
-- WhatsApp number: Replace `212XXXXXXXXX` with actual number
-- Address: Replace placeholder with actual hotel address
+- Hotel name: "إقامة الحرمين" / "Iqamat Al-Haramain"
+- Phone number: `+212670959747` (already set)
+- WhatsApp number: `212670959747` (already set)
+- Location: Zaio, Morocco
+- Google Maps link: `https://www.google.com/maps/place/34.9436487,-2.7526318`
 
 ### 2. Colors and Styling
 
@@ -59,44 +68,36 @@ cursor-eqamat-alharamain/
 ### 3. Adding Real Images
 
 **Replace placeholder images:**
-1. Add your images to the project folder
-2. Replace `<div class="placeholder-image">` elements with:
+1. Add your general room photos to the `images/` folder (you can organize them by category like `bedrooms/`, `living-rooms/`, `kitchens/`, etc.)
+2. Replace placeholder elements with actual images:
 ```html
-<img src="path/to/your/image.jpg" alt="Description" loading="lazy">
+<img src="images/bedrooms/bedroom1.jpg" alt="Comfortable Bedroom" loading="lazy">
 ```
 
-### 4. Google Maps Integration
+**Image Categories to Consider:**
+- Bedrooms (different styles and sizes)
+- Living rooms and common areas
+- Kitchens and dining areas
+- Bathrooms
+- Exterior views and building
+- Amenities (WiFi, AC, etc.)
 
-**In `contact.html`, replace the map placeholder:**
-1. Go to Google Maps
-2. Find your hotel location
-3. Click "Share" → "Embed a map"
-4. Copy the iframe code
-5. Replace the `<div class="map-placeholder">` section
-
-### 5. WhatsApp Integration
-
-**Update WhatsApp links:**
-- Replace `212XXXXXXXXX` with your actual WhatsApp number
-- Customize the default message in the contact page
-
-### 6. Content Updates
+### 4. Content Updates
 
 **Key sections to customize:**
 - Hotel description on homepage
-- Room details and amenities
-- Gallery photos and descriptions
-- Contact information
-- Business hours
+- Room details and amenities in `rooms.html`
+- Contact information in `contact.html`
+- Business hours and policies
 
 ## 🌐 Language Support
 
 The website supports Arabic and English with automatic RTL (right-to-left) layout switching.
 
-**To add French support:**
-1. Add `data-fr` attributes to translatable elements
-2. Update the language switching function in `script.js`
-3. Add French translations
+**Language switching functionality:**
+- Toggle button in the navigation
+- Automatic text direction switching
+- Preserved user preference
 
 ## 📱 Responsive Design
 
@@ -127,7 +128,7 @@ The website is fully responsive with breakpoints:
 ### Technologies Used
 - **HTML5**: Semantic markup
 - **CSS3**: Modern styling with CSS Grid and Flexbox
-- **JavaScript**: Vanilla JS for interactivity
+- **JavaScript**: Vanilla JS for interactivity and language switching
 - **Font Awesome**: Icons
 - **Google Fonts**: Amiri (Arabic) and Inter (English)
 
@@ -147,28 +148,30 @@ The website is fully responsive with breakpoints:
 ## 📞 Contact Integration
 
 ### WhatsApp Setup
-1. Update the phone number in contact links
-2. Customize the default message
-3. Test the link on mobile devices
+- Phone number: `+212670959747`
+- WhatsApp link: `https://wa.me/212670959747`
+- Direct messaging integration
 
 ### Phone Integration
-1. Add your actual phone number
-2. Test click-to-call functionality
-3. Ensure proper formatting for international calls
+- Click-to-call functionality
+- International number formatting
+- 24/7 availability mentioned
 
-## 🖼️ Gallery Features
+## 🏨 Hotel Features
 
-### Photo Management
-- **Categories**: Rooms, Exterior, Interior, Amenities
-- **Lightbox**: Full-screen image viewing
-- **Filtering**: Category-based filtering
-- **Responsive**: Optimized for all screen sizes
+### Apartment Information
+- **9 Comfortable Apartments** in the center of Zaio
+- **Central Location** for easy access
+- **Affordable Prices** for budget-conscious travelers
+- **Free WiFi** included
+- **Air Conditioning** for comfort
+- **Family Friendly** accommodations
+- **24/7 Contact Availability** for support
 
-### Adding Photos
-1. Add images to your project
-2. Update gallery items with real photos
-3. Add proper descriptions and categories
-4. Test lightbox functionality
+### Amenities
+- Modern amenities for pleasant stays
+- Welcoming atmosphere
+- Suitable for business and leisure travelers
 
 ## 📝 Form Handling
 
@@ -188,14 +191,14 @@ The contact form includes:
 ### Meta Tags
 - Title tags for each page
 - Meta descriptions
-- Open Graph tags (can be added)
 - Language attributes
+- Viewport settings
 
 ### Semantic HTML
 - Proper heading hierarchy
 - Alt text for images
 - Descriptive link text
-- Structured data (can be added)
+- Structured content
 
 ## 🔒 Security Considerations
 
