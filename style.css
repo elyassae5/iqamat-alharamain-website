@@ -383,6 +383,14 @@ body {
     color: var(--white);
 }
 
+.quick-info, .quick-info .info-card, .quick-info .info-link, .quick-info .info-card h3, .quick-info .info-card p {
+    color: var(--white) !important;
+}
+.quick-info .info-link:hover {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+}
+
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
