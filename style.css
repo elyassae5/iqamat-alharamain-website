@@ -441,6 +441,30 @@ body {
     text-decoration: underline;
 }
 
+.quick-info .info-link {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white) !important;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+}
+.quick-info .info-link:hover {
+    background: var(--accent-color);
+    color: var(--primary-color) !important;
+    box-shadow: var(--shadow-hover);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
 /* Footer */
 .footer {
     background: var(--deep-brown);
