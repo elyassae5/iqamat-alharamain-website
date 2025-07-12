@@ -422,14 +422,14 @@ body {
 }
 
 .info-link {
-    color: var(--accent-color);
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
 }
 
 .info-link:hover {
-    color: var(--white);
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
