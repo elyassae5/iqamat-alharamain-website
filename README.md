@@ -1,6 +1,6 @@
 # إقامة الحرمين (Iqamat Al-Haramain) - Moroccan Hotel Website
 
-A beautiful, responsive static website for a Moroccan hotel in Zaio, showcasing 9 comfortable apartments with authentic hospitality.
+A beautiful, responsive static website for a Moroccan hotel in Zaio, showcasing 8 comfortable apartments with authentic hospitality.
 
 ## 🌟 Features
 
