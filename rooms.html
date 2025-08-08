@@ -421,7 +421,55 @@
                 }
                 gallery.innerHTML = imagesHtml;
                 gallery.nextElementSibling.style.display = 'none';
-            } else {
+            } else if (apartmentNumber === 1) {
+                const imageFiles = [
+                    'Screenshot 2025-08-08 200622.png',
+                    'Screenshot 2025-08-08 200612.png',
+                    'Screenshot 2025-08-08 200605.png',
+                    'Screenshot 2025-08-08 200110.png',
+                    'Screenshot 2025-08-08 200054.png',
+                    'Screenshot 2025-08-08 200046.png',
+                    'Screenshot 2025-08-08 200037.png',
+                    'Screenshot 2025-08-08 200029.png',
+                    'Screenshot 2025-08-08 200014.png',
+                    'Screenshot 2025-08-08 200003.png',
+                    'Screenshot 2025-08-08 195956.png',
+                    'Screenshot 2025-08-08 195948.png'
+                ];
+                let imagesHtml = '';
+                for (const file of imageFiles) {
+                    const imgPath = `assets/apartment1/${file}`;
+                    imagesHtml += `<img src="${imgPath}" alt="Apartment 1 Photo" class="apartment-gallery-img" onerror="this.style.display='none'">`;
+                }
+                gallery.innerHTML = imagesHtml;
+                gallery.nextElementSibling.style.display = 'none';
+            } else if (apartmentNumber === 5) {
+                const imageFiles = [
+                    'Screenshot 2025-08-08 201807.png',
+                    'Screenshot 2025-08-08 201758.png',
+                    'Screenshot 2025-08-08 201737.png',
+                    'Screenshot 2025-08-08 201731.png',
+                    'Screenshot 2025-08-08 201723.png',
+                    'Screenshot 2025-08-08 201715.png',
+                    'Screenshot 2025-08-08 201708.png',
+                    'Screenshot 2025-08-08 201700.png',
+                    'Screenshot 2025-08-08 201654.png',
+                    'Screenshot 2025-08-08 201647.png',
+                    'Screenshot 2025-08-08 201641.png',
+                    'Screenshot 2025-08-08 201632.png',
+                    'Screenshot 2025-08-08 201626.png',
+                    'Screenshot 2025-08-08 201619.png'
+                ];
+                let imagesHtml = '';
+                for (const file of imageFiles) {
+                    const imgPath = `assets/apartment5/${file}`;
+                    imagesHtml += `<img src="${imgPath}" alt="Apartment 5 Photo" class="apartment-gallery-img" onerror="this.style.display='none'">`;
+                }
+                gallery.innerHTML = imagesHtml;
+                gallery.nextElementSibling.style.display = 'none';
+            }
+
+            else {
                 // Show placeholder for other apartments
                 gallery.innerHTML = '';
                 gallery.nextElementSibling.style.display = '';
