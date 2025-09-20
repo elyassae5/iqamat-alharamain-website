@@ -113,6 +113,17 @@ body::before {
     font-weight: 300;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
