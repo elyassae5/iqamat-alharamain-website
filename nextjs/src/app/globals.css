@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds — warm whites with life */
+  --color-ivory: #FFFEF9;
+  --color-cream: #FFF7ED;
+  --color-cream-dark: #FFE4B8;
+
+  /* Primary: rich vibrant blue */
+  --color-gold: #1A60E8;
+  --color-gold-light: #4A8AFF;
+  --color-gold-dark: #0F48C0;
+  --color-gold-muted: #BDD4FF;
+
+  /* Warm amber accent — makes prices, highlights, icons warm & exciting */
+  --color-amber: #F0A020;
+  --color-amber-dark: #C88010;
+  --color-amber-light: #FFD580;
+
+  /* Deep sections — deep rich navy */
+  --color-brown-deep: #0C1F6A;
+  --color-brown-dark: #142E98;
+  --color-brown: #1E44C8;
+  --color-brown-medium: #5A88D0;
+  --color-brown-light: #9BBDE8;
+
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-brown-deep);
+  font-family: var(--font-inter), Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accent divider line utility */
+.gold-line {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 0 auto;
+}
+
+/* Playfair Display heading class */
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Dot texture background */
+.dot-texture {
+  background-image: radial-gradient(#1D6FE8 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.dot-texture-sm {
+  background-image: radial-gradient(#1D6FE8 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Card lift — depth and life */
+.card-lift {
+  box-shadow: 0 2px 20px rgba(12, 31, 106, 0.07), 0 1px 4px rgba(12, 31, 106, 0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-lift:hover {
+  box-shadow: 0 12px 40px rgba(12, 31, 106, 0.15), 0 2px 8px rgba(12, 31, 106, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Smooth image fade-in */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-muted);
+  border-radius: 3px;
+}
