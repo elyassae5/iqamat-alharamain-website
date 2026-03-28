@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C1F6A"/>
+      <stop offset="1" stop-color="#1A60E8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+
+  <!-- Moroccan arch / door frame (white) -->
+  <path d="M10 27 L10 17 Q10 7 16 7 Q22 7 22 17 L22 27 Z" fill="white" opacity="0.95"/>
+
+  <!-- Inner arch opening (deep blue = negative space) -->
+  <path d="M12.5 27 L12.5 17.5 Q12.5 10 16 10 Q19.5 10 19.5 17.5 L19.5 27 Z" fill="#0C1F6A"/>
+
+  <!-- Amber keystone accent at crown of arch -->
+  <circle cx="16" cy="7.5" r="2.2" fill="#F0A020"/>
+
+  <!-- Two small amber dots as decorative window lights -->
+  <circle cx="13.5" cy="20" r="1.1" fill="#F0A020" opacity="0.7"/>
+  <circle cx="18.5" cy="20" r="1.1" fill="#F0A020" opacity="0.7"/>
+</svg>
