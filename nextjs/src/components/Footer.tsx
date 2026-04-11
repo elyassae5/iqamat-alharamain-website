@@ -96,6 +96,17 @@ export default function Footer() {
           <p className="tracking-widest uppercase">
             {t("Zaio, Morocco", "زايو، المغرب")}
           </p>
+          <p>
+            {t("Built by", "صنع بواسطة")}{" "}
+            <a
+              href="https://www.lanceerstudio.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white transition-colors"
+            >
+              Lanceer Studio
+            </a>
+          </p>
         </div>
       </div>
     </footer>
