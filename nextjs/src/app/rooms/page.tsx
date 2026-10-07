@@ -21,43 +21,40 @@ export default function RoomsPage() {
       <section className="pt-32 md:pt-44">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <Reveal>
-            <p className="eyebrow text-clay">{t("The apartments", "الشقق")}</p>
+            <p className="eyebrow text-clay">{t.rooms.eyebrow}</p>
             <h1 className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] sm:text-6xl lg:text-[5.5rem]">
-              {t("Choose your apartment.", "اختر شقتك.")}
+              {t.rooms.title}
             </h1>
             <p className="mt-7 max-w-xl text-lg text-ink-soft">
-              {t(
-                "Each apartment offers comfort and authentic Moroccan charm in the heart of Zaio. Tap any photo to see the full gallery.",
-                "كل شقة تقدم الراحة والسحر المغربي الأصيل في قلب مدينة زايو. اضغط على أي صورة لمشاهدة المعرض كاملاً."
-              )}
+              {t.rooms.intro}
             </p>
           </Reveal>
 
           <Reveal delay={0.1}>
             <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-4">
               <div className="bg-paper p-4 sm:p-6">
-                <dt className="text-sm text-muted">{t("From, per night", "ابتداءً من، لليلة")}</dt>
+                <dt className="text-sm text-muted">{t.rooms.fromPerNight}</dt>
                 <dd className="font-display mt-2 text-lg sm:text-2xl">
-                  {STARTING_PRICE_MAD} {t("MAD", "درهم")}
+                  {STARTING_PRICE_MAD} {t.common.mad}
                 </dd>
               </div>
               <div className="bg-paper p-4 sm:p-6">
-                <dt className="text-sm text-muted">{t("Check-in / Check-out", "الوصول / المغادرة")}</dt>
+                <dt className="text-sm text-muted">{t.rooms.checkInOut}</dt>
                 <dd className="font-display mt-2 text-lg sm:text-2xl">
                   <span dir="ltr">{CHECK_IN} / {CHECK_OUT}</span>
                 </dd>
               </div>
               {roomTypes.map((type) => (
-                <div key={type.en} className="bg-paper p-4 sm:p-6">
-                  <dt className="text-sm text-muted">{t(type.en, type.ar)}</dt>
-                  <dd className="font-display mt-2 text-lg sm:text-2xl">{t(type.detailEn, type.detailAr)}</dd>
+                <div key={type.key} className="bg-paper p-4 sm:p-6">
+                  <dt className="text-sm text-muted">{t.roomTypes[type.key].name}</dt>
+                  <dd className="font-display mt-2 text-lg sm:text-2xl">{t.roomTypes[type.key].detail}</dd>
                 </div>
               ))}
             </dl>
           </Reveal>
 
           <nav
-            aria-label={t("Jump to an apartment", "انتقل إلى شقة")}
+            aria-label={t.rooms.jumpTo}
             className="no-scrollbar -mx-4 mt-10 flex gap-2 overflow-x-auto px-4 sm:mx-0 sm:px-0"
           >
             {apartments.map((apt) => (
@@ -66,7 +63,7 @@ export default function RoomsPage() {
                 href={`#apartment-${apt.id}`}
                 className="shrink-0 rounded-full border border-line px-4 py-2 text-sm font-semibold transition-colors hover:border-ink hover:bg-ink hover:text-paper"
               >
-                {t(apt.titleEn, apt.titleAr)}
+                {t.common.apartment(apt.id)}
               </a>
             ))}
           </nav>
@@ -78,13 +75,10 @@ export default function RoomsPage() {
         <div className="mx-auto max-w-7xl space-y-20 px-4 sm:px-6 md:space-y-32 lg:px-10">
           {apartments.map((apt, i) => {
             const flip = i % 2 === 1;
-            const title = t(apt.titleEn, apt.titleAr);
+            const title = t.common.apartment(apt.id);
             const extra = apt.images.length - 3;
             const secondary = apt.images.filter((src) => src !== apt.coverImage).slice(0, 2);
-            const message = t(
-              `Hello, I would like to ask about ${apt.titleEn} at Iqamat Al-Haramain.`,
-              `مرحباً، أود الاستفسار عن ${apt.titleAr} في إقامة الحرمين.`
-            );
+            const message = t.rooms.whatsappMessage(title);
             return (
               <article
                 key={apt.id}
@@ -96,7 +90,7 @@ export default function RoomsPage() {
                     <button
                       type="button"
                       onClick={() => setOpen({ apt: i, img: apt.images.indexOf(apt.coverImage) })}
-                      aria-label={t(`Open ${title} gallery`, `فتح معرض ${title}`)}
+                      aria-label={t.rooms.openGallery(title)}
                       className="group relative col-span-3 aspect-[4/3] overflow-hidden rounded-3xl bg-stone"
                     >
                       <Image
@@ -113,7 +107,7 @@ export default function RoomsPage() {
                           type="button"
                           key={src}
                           onClick={() => setOpen({ apt: i, img: apt.images.indexOf(src) })}
-                          aria-label={t(`Open ${title} gallery`, `فتح معرض ${title}`)}
+                          aria-label={t.rooms.openGallery(title)}
                           className="group relative aspect-square overflow-hidden rounded-2xl bg-stone"
                         >
                           <Image
@@ -133,7 +127,7 @@ export default function RoomsPage() {
                     >
                       <Icon name="images" className="h-6 w-6 text-brass" />
                       <span dir="ltr" className="font-display text-2xl leading-none">+{extra}</span>
-                      <span className="text-xs text-paper/70">{t("photos", "صور")}</span>
+                      <span className="text-xs text-paper/70">{t.common.photos}</span>
                     </button>
                   </div>
                 </Reveal>
@@ -143,16 +137,16 @@ export default function RoomsPage() {
                     {String(apt.id).padStart(2, "0")}
                   </p>
                   <h2 className="font-display mt-2 text-4xl sm:text-5xl">{title}</h2>
-                  <p className="mt-5 text-lg text-ink-soft">{t(apt.descriptionEn, apt.descriptionAr)}</p>
+                  <p className="mt-5 text-lg text-ink-soft">{t.apartmentDescriptions[apt.id]}</p>
 
                   <div className="mt-7 flex items-end gap-3 border-y border-line py-5">
                     <p className="font-display text-4xl">
                       {apt.priceMAD}
-                      <span className="ms-1.5 font-sans text-base text-muted">{t("MAD / night", "درهم / ليلة")}</span>
+                      <span className="ms-1.5 font-sans text-base text-muted">{t.common.perNight}</span>
                     </p>
                     <p className="mb-1 text-sm text-muted">
-                      <span className="sr-only">{t("Was", "كان")} </span>
-                      <s>{apt.originalPriceMAD} {t("MAD", "درهم")}</s>
+                      <span className="sr-only">{t.rooms.was} </span>
+                      <s>{apt.originalPriceMAD} {t.common.mad}</s>
                     </p>
                   </div>
 
@@ -164,11 +158,11 @@ export default function RoomsPage() {
                       className="btn btn-clay"
                     >
                       <Icon name="whatsapp" className="h-5 w-5" />
-                      {t("Ask about this apartment", "استفسر عن هذه الشقة")}
+                      {t.rooms.ask}
                     </a>
                     <button type="button" onClick={() => setOpen({ apt: i, img: 0 })} className="btn btn-line">
                       <Icon name="images" className="h-5 w-5" />
-                      {t(`View all ${apt.photoCount} photos`, `عرض كل الصور (${apt.photoCount})`)}
+                      {t.rooms.viewAll(apt.photoCount)}
                     </button>
                   </div>
                 </Reveal>
@@ -183,7 +177,7 @@ export default function RoomsPage() {
           <GalleryModal
             images={active.images}
             index={open.img}
-            title={t(active.titleEn, active.titleAr)}
+            title={t.common.apartment(active.id)}
             onClose={() => setOpen(null)}
             onIndexChange={(img) => setOpen({ apt: open.apt, img })}
           />

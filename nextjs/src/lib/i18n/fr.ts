@@ -1,0 +1,143 @@
+import type { Dictionary } from "./types";
+
+// French typography: a non-breaking space goes before ? ! : and ;
+const nb = " ";
+
+const fr: Dictionary = {
+  meta: { code: "fr", name: "Français", dir: "ltr" },
+  common: {
+    bookOnWhatsApp: "Réserver sur WhatsApp",
+    bookNow: "Réserver",
+    callUs: "Appelez-nous",
+    from: "À partir de",
+    perNight: "MAD / nuit",
+    mad: "MAD",
+    checkIn: "Arrivée",
+    checkOut: "Départ",
+    zaioMorocco: "Zaio, Maroc",
+    openInMaps: "Ouvrir dans Google Maps",
+    apartment: (n) => `Appartement ${n}`,
+    photos: "photos",
+  },
+  nav: {
+    home: "Accueil",
+    apartments: "Appartements",
+    contact: "Contact",
+    main: "Navigation principale",
+    homeLabel: "Iqamat Al-Haramain, accueil",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+    language: "Langue",
+    skipToContent: "Aller au contenu",
+  },
+  amenities: {
+    apartments: "8 appartements",
+    central: "Emplacement central à Zaio",
+    affordable: "Prix abordables",
+    wifi: "Wi-Fi gratuit",
+    aircon: "Climatisation",
+    family: "Idéal pour les familles",
+    reachable: "Joignables 24h/24",
+    washer: "Lave-linge",
+  },
+  roomTypes: {
+    label: "Type d'appartement",
+    large: { name: "Grand", detail: "Deux chambres" },
+    small: { name: "Petit et moyen", detail: "Une chambre avec lits d'appoint" },
+    diningArea: "Coin repas",
+    washingMachine: "Lave-linge",
+  },
+  home: {
+    heroImageAlt: "Salon marocain traditionnel avec sol carrelé",
+    heroEyebrow: "Appartements à Zaio, Maroc",
+    heroTitle: "Votre deuxième maison à Zaio.",
+    heroText:
+      "Huit appartements meublés en centre-ville, pour les familles, les courts séjours et les longues visites au pays. Réservez directement auprès de nous.",
+    seeApartments: "Voir les appartements",
+    welcomeEyebrow: "Bienvenue",
+    welcomeTitle: "Un havre de calme pour profiter de la famille à Zaio.",
+    welcomeText:
+      "Iqamat Al-Haramain propose 8 appartements confortables au centre de Zaio. Que vous veniez pour le travail ou pour les loisirs, nous vous offrons un accueil chaleureux et des équipements modernes pour un séjour agréable.",
+    explore: "Découvrir les appartements",
+    archAlt: "Arche sculptée menant à une chambre",
+    kitchenAlt: "Cuisine équipée aux placards rouges",
+    whyEyebrow: "Pourquoi séjourner chez nous",
+    whyTitle: "L'essentiel, sans souci.",
+    layoutsEyebrow: "Deux configurations",
+    layoutsTitle: "De la place pour toute la famille.",
+    layoutsText: "Chaque appartement dispose d'un coin repas et d'un lave-linge.",
+    railEyebrow: "Les appartements",
+    railTitle: "Trouvez votre place.",
+    railPrev: "Appartements précédents",
+    railNext: "Plus d'appartements",
+    locationEyebrow: "Emplacement",
+    locationTitle: "Au centre de Zaio.",
+    locationText:
+      "Vous nous trouverez au centre de Zaio, dans la province de Nador. Ouvrez la carte pour l'itinéraire.",
+    contactDetails: "Coordonnées",
+    openLocation: "Ouvrir l'emplacement dans Google Maps",
+    ctaTitle: `Prêt à réserver votre séjour${nb}?`,
+    ctaText:
+      "Écrivez-nous ou appelez-nous pour connaître les disponibilités. Nous sommes joignables 24h/24.",
+  },
+  rooms: {
+    eyebrow: "Les appartements",
+    title: "Choisissez votre appartement.",
+    intro:
+      "Chaque appartement allie confort et charme marocain authentique, au cœur de Zaio. Touchez une photo pour voir toute la galerie.",
+    fromPerNight: "À partir de, par nuit",
+    checkInOut: "Arrivée / Départ",
+    jumpTo: "Aller à un appartement",
+    openGallery: (title) => `Ouvrir la galerie${nb}: ${title}`,
+    was: "Ancien prix",
+    ask: "Se renseigner sur cet appartement",
+    viewAll: (n) => `Voir les ${n} photos`,
+    whatsappMessage: (title) =>
+      `Bonjour, je souhaiterais avoir des informations sur l'${title} à Iqamat Al-Haramain.`,
+  },
+  apartmentDescriptions: {
+    1: "Un appartement bien aménagé, à l'ambiance chaleureuse et accueillante, avec tout le confort moderne pour un séjour reposant.",
+    2: "Un appartement spacieux et élégamment meublé, pour un séjour haut de gamme au cœur de Zaio.",
+    3: "Un refuge élégant qui marie chaleur marocaine et design contemporain, idéal pour les familles et les couples.",
+    4: "Un appartement joliment conçu, avec un espace de vie généreux et un mobilier de qualité.",
+    5: "Un appartement charmant et confortable, idéal pour les courts séjours comme pour les visites prolongées à Zaio.",
+    7: "Un appartement raffiné aux détails soignés, pour se sentir chez soi en toute sérénité.",
+    8: "Un appartement accueillant à la touche marocaine chaleureuse, avec tout le nécessaire pour un séjour parfait.",
+  },
+  contact: {
+    eyebrow: "Contact",
+    title: "Parlez-nous directement.",
+    intro:
+      "Contactez-nous pour réserver votre appartement ou pour toute question. Nous sommes disponibles 24h/24.",
+    hours: "Horaires",
+    aroundClock: "Nous sommes disponibles 24h/24.",
+    whatsappNote: "Le moyen le plus rapide de réserver",
+    callNote: "Réservation directe par téléphone",
+    location: "Emplacement",
+    locationNote: "Retrouvez-nous au cœur de Zaio",
+    findUs: "Nous trouver",
+    ourLocation: "Notre adresse",
+    openMapFallback: "Ouvrir la carte dans Google Maps",
+    mapTitle: "Carte indiquant Iqamat Al-Haramain à Zaio",
+  },
+  gallery: {
+    label: (title) => `Photos${nb}: ${title}`,
+    close: "Fermer la galerie",
+    previous: "Photo précédente",
+    next: "Photo suivante",
+    photoAlt: (title, i, n) => `${title}, photo ${i} sur ${n}`,
+    show: (i) => `Afficher la photo ${i}`,
+  },
+  footer: {
+    tagline: "Votre deuxième maison au cœur de Zaio, au Maroc.",
+    explore: "Explorer",
+    contact: "Contact",
+    yourStay: "Votre séjour",
+    rights: "Tous droits réservés.",
+  },
+  dock: {
+    whatsappLabel: "Nous contacter sur WhatsApp",
+  },
+};
+
+export default fr;

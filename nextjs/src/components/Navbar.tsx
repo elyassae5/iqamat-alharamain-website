@@ -8,11 +8,12 @@ import { useLanguage } from "@/lib/language-context";
 import { navLinks, PHONE_DISPLAY, PHONE_HREF, whatsappLink } from "@/lib/site";
 import Icon from "./Icon";
 import Logo from "./Logo";
+import { LanguageGrid, LanguageMenu } from "./LanguagePicker";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openPath, setOpenPath] = useState<string | null>(null);
-  const { lang, toggleLang, t } = useLanguage();
+  const { t } = useLanguage();
   const pathname = usePathname();
   // The menu closes itself on navigation because it is tied to the path it was opened on.
   const menuOpen = openPath === pathname;
@@ -41,7 +42,7 @@ export default function Navbar() {
   return (
     <>
       <a href="#main" className="skip-link">
-        {t("Skip to content", "انتقل إلى المحتوى")}
+        {t.nav.skipToContent}
       </a>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-500 ${
@@ -51,13 +52,13 @@ export default function Navbar() {
         }`}
       >
         <nav
-          aria-label={t("Main", "القائمة الرئيسية")}
+          aria-label={t.nav.main}
           className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 md:h-20 lg:px-10"
         >
           <Link
             href="/"
             className="flex shrink-0 items-center gap-2.5"
-            aria-label={t("Iqamat Al-Haramain, home", "إقامة الحرمين، الصفحة الرئيسية")}
+            aria-label={t.nav.homeLabel}
           >
             <Logo
               className={`h-9 w-9 transition-colors ${overPhoto ? "text-white [--logo-arch:#1d1b18]" : "text-ink"}`}
@@ -88,7 +89,7 @@ export default function Navbar() {
                         : "opacity-80 hover:opacity-100"
                     }`}
                   >
-                    {t(link.en, link.ar)}
+                    {t.nav[link.key]}
                   </Link>
                 </li>
               );
@@ -96,23 +97,7 @@ export default function Navbar() {
           </ul>
 
           <div className="ms-auto flex items-center gap-2 md:ms-4">
-            <button
-              type="button"
-              onClick={toggleLang}
-              aria-label={lang === "en" ? "التبديل إلى العربية" : "Switch to English"}
-              className={`flex h-10 items-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors ${
-                overPhoto
-                  ? "border-white/40 hover:bg-white/15"
-                  : "border-line hover:border-ink"
-              }`}
-            >
-              <Icon name="globe" className="h-4 w-4 opacity-80" />
-              {lang === "en" ? (
-                <span lang="ar" className="font-[family-name:var(--font-plex-arabic)]">العربية</span>
-              ) : (
-                <span lang="en" className="font-[family-name:var(--font-manrope)]">English</span>
-              )}
-            </button>
+            <LanguageMenu onDark={overPhoto} />
 
             <a
               href={whatsappLink()}
@@ -123,7 +108,7 @@ export default function Navbar() {
               }`}
             >
               <Icon name="whatsapp" className="h-4 w-4" />
-              {t("Book now", "احجز الآن")}
+              {t.common.bookNow}
             </a>
 
             <button
@@ -131,7 +116,7 @@ export default function Navbar() {
               onClick={() => setOpenPath(menuOpen ? null : pathname)}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              aria-label={menuOpen ? t("Close menu", "إغلاق القائمة") : t("Open menu", "فتح القائمة")}
+              aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
               className={`flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
                 overPhoto ? "border-white/40" : "border-line"
               }`}
@@ -166,16 +151,19 @@ export default function Navbar() {
                     aria-current={pathname === link.href ? "page" : undefined}
                     className="flex items-center justify-between py-5 font-display text-4xl"
                   >
-                    {t(link.en, link.ar)}
+                    {t.nav[link.key]}
                     <Icon name="arrow" className="h-6 w-6 text-clay rtl:-scale-x-100" />
                   </Link>
                 </motion.li>
               ))}
             </ul>
             <div className="mt-auto grid gap-3">
+              <div className="mb-4">
+                <LanguageGrid />
+              </div>
               <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-clay w-full">
                 <Icon name="whatsapp" className="h-5 w-5" />
-                {t("Book on WhatsApp", "احجز عبر واتساب")}
+                {t.common.bookOnWhatsApp}
               </a>
               <a href={PHONE_HREF} className="btn btn-line w-full">
                 <Icon name="phone" className="h-5 w-5" />

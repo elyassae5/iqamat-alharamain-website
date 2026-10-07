@@ -40,11 +40,11 @@ export default function ContactDock() {
             className="btn btn-clay min-h-12! flex-1"
           >
             <Icon name="whatsapp" className="h-5 w-5" />
-            {t("Book on WhatsApp", "احجز عبر واتساب")}
+            {t.common.bookOnWhatsApp}
           </a>
           <a
             href={PHONE_HREF}
-            aria-label={t("Call us", "اتصل بنا")}
+            aria-label={t.common.callUs}
             className="btn min-h-12! w-12 px-0! text-paper hover:bg-white/10"
           >
             <Icon name="phone" className="h-5 w-5" />
@@ -56,7 +56,7 @@ export default function ContactDock() {
         href={whatsappLink()}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={t("Contact us on WhatsApp", "تواصل معنا عبر واتساب")}
+        aria-label={t.dock.whatsappLabel}
         className="fixed bottom-8 end-8 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#1f8f4e] text-white shadow-[0_10px_30px_rgb(31_143_78/0.35)] transition-transform hover:scale-105 md:flex"
       >
         <Icon name="whatsapp" className="h-7 w-7" />

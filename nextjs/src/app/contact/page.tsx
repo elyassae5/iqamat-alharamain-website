@@ -29,7 +29,7 @@ export default function ContactPage() {
     {
       icon: "whatsapp",
       title: "WhatsApp",
-      note: t("Fastest way to book", "أسرع طريقة للحجز"),
+      note: t.contact.whatsappNote,
       value: PHONE_DISPLAY,
       ltrValue: true,
       href: whatsappLink(),
@@ -38,17 +38,17 @@ export default function ContactPage() {
     },
     {
       icon: "phone",
-      title: t("Call us", "اتصل بنا"),
-      note: t("Direct booking by phone", "الحجز المباشر عبر الهاتف"),
+      title: t.common.callUs,
+      note: t.contact.callNote,
       value: PHONE_DISPLAY,
       ltrValue: true,
       href: PHONE_HREF,
     },
     {
       icon: "pin",
-      title: t("Location", "الموقع"),
-      note: t("Find us in the heart of Zaio", "تجدوننا في قلب مدينة زايو"),
-      value: t("Zaio, Morocco", "زايو، المغرب"),
+      title: t.contact.location,
+      note: t.contact.locationNote,
+      value: t.common.zaioMorocco,
       href: MAPS_HREF,
       external: true,
     },
@@ -59,15 +59,12 @@ export default function ContactPage() {
       <section className="pt-32 md:pt-44">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-x-14 lg:px-10">
           <Reveal className="lg:col-span-5">
-            <p className="eyebrow text-clay">{t("Contact", "تواصل معنا")}</p>
+            <p className="eyebrow text-clay">{t.contact.eyebrow}</p>
             <h1 className="font-display mt-5 text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
-              {t("Talk to us directly.", "تواصل معنا مباشرة.")}
+              {t.contact.title}
             </h1>
             <p className="mt-7 max-w-md text-lg text-ink-soft">
-              {t(
-                "Reach out to reserve your apartment or ask any question. We are available around the clock.",
-                "تواصل معنا لحجز شقتك أو لطرح أي سؤال. نحن متاحون على مدار الساعة."
-              )}
+              {t.contact.intro}
             </p>
           </Reveal>
 
@@ -115,20 +112,20 @@ export default function ContactPage() {
             <div className="rounded-3xl bg-ink p-7 text-paper on-dark">
               <div className="flex items-center gap-3">
                 <Icon name="clock" className="h-5 w-5 text-brass" />
-                <h2 className="eyebrow text-brass">{t("Hours", "الأوقات")}</h2>
+                <h2 className="eyebrow text-brass">{t.contact.hours}</h2>
               </div>
               <dl className="mt-6 grid grid-cols-2 gap-6">
                 <div>
-                  <dt className="text-sm text-paper/65">{t("Check-in", "تسجيل الوصول")}</dt>
+                  <dt className="text-sm text-paper/65">{t.common.checkIn}</dt>
                   <dd className="font-display mt-1 text-4xl">{CHECK_IN}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-paper/65">{t("Check-out", "المغادرة")}</dt>
+                  <dt className="text-sm text-paper/65">{t.common.checkOut}</dt>
                   <dd className="font-display mt-1 text-4xl">{CHECK_OUT}</dd>
                 </div>
               </dl>
               <p className="mt-6 border-t border-white/10 pt-5 text-sm text-paper/70">
-                {t("We are available around the clock.", "نحن متاحون على مدار الساعة.")}
+                {t.contact.aroundClock}
               </p>
             </div>
           </Reveal>
@@ -139,12 +136,12 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="eyebrow text-clay">{t("Find us", "اعثر علينا")}</p>
-              <h2 className="font-display mt-5 text-4xl sm:text-5xl">{t("Our location", "موقعنا")}</h2>
+              <p className="eyebrow text-clay">{t.contact.findUs}</p>
+              <h2 className="font-display mt-5 text-4xl sm:text-5xl">{t.contact.ourLocation}</h2>
             </div>
             <a href={MAPS_HREF} target="_blank" rel="noopener noreferrer" className="btn btn-ink self-start sm:self-auto">
               <Icon name="pin" className="h-5 w-5" />
-              {t("Open in Google Maps", "افتح في خرائط جوجل")}
+              {t.common.openInMaps}
             </a>
           </Reveal>
           <Reveal delay={0.1} className="relative mt-10 overflow-hidden rounded-3xl border border-line bg-stone">
@@ -155,7 +152,7 @@ export default function ContactPage() {
               className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted"
             >
               <Icon name="pin" className="h-8 w-8 text-clay" />
-              {t("Open the map in Google Maps", "افتح الخريطة في خرائط جوجل")}
+              {t.contact.openMapFallback}
             </a>
             <iframe
               src={MAP_EMBED_SRC}
@@ -163,7 +160,7 @@ export default function ContactPage() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title={t("Map showing Iqamat Al-Haramain in Zaio", "خريطة تظهر موقع إقامة الحرمين في زايو")}
+              title={t.contact.mapTitle}
             />
           </Reveal>
         </div>

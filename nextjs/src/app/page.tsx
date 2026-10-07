@@ -45,10 +45,7 @@ export default function HomePage() {
         >
           <Image
             src="/assets/apartment2/Screenshot 2025-07-30 162441.png"
-            alt={t(
-              "Living room with a traditional Moroccan salon and tiled floor",
-              "صالون مغربي تقليدي بأرضية من البلاط"
-            )}
+            alt={t.home.heroImageAlt}
             fill
             preload
             quality={70}
@@ -68,7 +65,7 @@ export default function HomePage() {
             className="eyebrow flex items-center gap-3 text-white/85"
           >
             <span className="h-px w-8 bg-brass" />
-            {t("Apartments in Zaio, Morocco", "شقق في زايو، المغرب")}
+            {t.home.heroEyebrow}
           </motion.p>
 
           <motion.h1
@@ -77,7 +74,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.3, ease }}
             className="font-display mt-6 max-w-4xl text-[2.9rem] leading-[1.02] font-normal sm:text-6xl lg:text-[5.5rem]"
           >
-            {t("Your home away from home in Zaio.", "بيتك الثاني في قلب زايو.")}
+            {t.home.heroTitle}
           </motion.h1>
 
           <motion.p
@@ -86,10 +83,7 @@ export default function HomePage() {
             transition={{ duration: 0.9, delay: 0.45, ease }}
             className="mt-6 max-w-xl text-lg text-white/85"
           >
-            {t(
-              "Eight furnished apartments in the centre of town, for families, short stays and long visits home. Book directly with us.",
-              "ثماني شقق مفروشة في وسط المدينة، للعائلات وللإقامات القصيرة والزيارات الطويلة. احجز معنا مباشرة."
-            )}
+            {t.home.heroText}
           </motion.p>
 
           <motion.div
@@ -100,10 +94,10 @@ export default function HomePage() {
           >
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-clay">
               <Icon name="whatsapp" className="h-5 w-5" />
-              {t("Book on WhatsApp", "احجز عبر واتساب")}
+              {t.common.bookOnWhatsApp}
             </a>
             <Link href="/rooms" className="btn btn-glass">
-              {t("See the apartments", "شاهد الشقق")}
+              {t.home.seeApartments}
               <Icon name="arrow" className="h-4 w-4 rtl:-scale-x-100" />
             </Link>
           </motion.div>
@@ -115,20 +109,20 @@ export default function HomePage() {
             className="mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-white/20 pt-6"
           >
             <div>
-              <dt className="text-xs text-white/65 sm:text-sm">{t("From", "ابتداءً من")}</dt>
+              <dt className="text-xs text-white/65 sm:text-sm">{t.common.from}</dt>
               <dd className="font-display mt-1 text-2xl sm:text-3xl">
                 {STARTING_PRICE_MAD}
                 <span className="block font-sans text-xs text-white/70 sm:inline sm:ms-1.5 sm:text-sm">
-                  {t("MAD / night", "درهم / ليلة")}
+                  {t.common.perNight}
                 </span>
               </dd>
             </div>
             <div>
-              <dt className="text-xs text-white/65 sm:text-sm">{t("Check-in", "الوصول")}</dt>
+              <dt className="text-xs text-white/65 sm:text-sm">{t.common.checkIn}</dt>
               <dd className="font-display mt-1 text-2xl sm:text-3xl">{CHECK_IN}</dd>
             </div>
             <div>
-              <dt className="text-xs text-white/65 sm:text-sm">{t("Check-out", "المغادرة")}</dt>
+              <dt className="text-xs text-white/65 sm:text-sm">{t.common.checkOut}</dt>
               <dd className="font-display mt-1 text-2xl sm:text-3xl">{CHECK_OUT}</dd>
             </div>
           </motion.dl>
@@ -140,24 +134,18 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-12 lg:px-10">
           <div className="lg:col-span-6">
             <Reveal>
-              <p className="eyebrow text-clay">{t("Welcome", "أهلاً وسهلاً")}</p>
+              <p className="eyebrow text-clay">{t.home.welcomeEyebrow}</p>
               <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
-                {t(
-                  "A quiet base for family time in Zaio.",
-                  "مكان هادئ لقضاء وقت العائلة في زايو."
-                )}
+                {t.home.welcomeTitle}
               </h2>
               <p className="mt-7 max-w-lg text-lg text-ink-soft">
-                {t(
-                  "Iqamat Al-Haramain offers 8 comfortable apartments in the center of Zaio. Whether you are visiting for business or leisure, we provide a welcoming atmosphere and modern amenities for a pleasant stay.",
-                  "تقدم إقامة الحرمين 8 شقق مريحة في وسط مدينة زايو. سواء كانت زيارتك للعمل أو للترفيه، نوفر لك أجواء ترحيبية ووسائل راحة حديثة لإقامة ممتعة."
-                )}
+                {t.home.welcomeText}
               </p>
               <Link
                 href="/rooms"
                 className="group mt-9 inline-flex items-center gap-3 border-b border-ink pb-1 font-semibold"
               >
-                {t("Explore the apartments", "اكتشف الشقق")}
+                {t.home.explore}
                 <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
               </Link>
             </Reveal>
@@ -168,7 +156,7 @@ export default function HomePage() {
               <div className="arch relative aspect-[3/4] overflow-hidden bg-stone">
                 <Image
                   src="/assets/apartment4/Screenshot 2025-07-30 160510.png"
-                  alt={t("Carved arch leading into a bedroom", "قوس منحوت يؤدي إلى غرفة نوم")}
+                  alt={t.home.archAlt}
                   fill
                   quality={70}
                   sizes="(max-width: 1024px) 90vw, 448px"
@@ -179,7 +167,7 @@ export default function HomePage() {
                 <div className="relative aspect-square">
                   <Image
                     src="/assets/apartment3/Screenshot 2025-07-30 164035.png"
-                    alt={t("Fitted kitchen with red cabinets", "مطبخ مجهز بخزائن حمراء")}
+                    alt={t.home.kitchenAlt}
                     fill
                     quality={70}
                     sizes="220px"
@@ -198,20 +186,20 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="eyebrow text-clay">{t("Why stay with us", "لماذا تختارنا")}</p>
+              <p className="eyebrow text-clay">{t.home.whyEyebrow}</p>
               <h2 className="font-display mt-5 max-w-2xl text-4xl leading-[1.08] sm:text-5xl">
-                {t("The essentials, taken care of.", "كل ما تحتاجه، متوفر.")}
+                {t.home.whyTitle}
               </h2>
             </div>
           </Reveal>
           <ul className="mt-14 grid grid-cols-2 border-s border-t border-line md:grid-cols-4">
             {amenities.map((item, i) => (
-              <li key={item.en} className="border-b border-e border-line">
+              <li key={item.key} className="border-b border-e border-line">
                 <Reveal delay={i * 0.04} className="flex h-full flex-col gap-6 p-5 sm:p-7">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-clay-soft text-clay">
                     <Icon name={item.icon} className="h-5 w-5" />
                   </span>
-                  <span className="text-base font-semibold leading-snug sm:text-lg">{t(item.en, item.ar)}</span>
+                  <span className="text-base font-semibold leading-snug sm:text-lg">{t.amenities[item.key]}</span>
                 </Reveal>
               </li>
             ))}
@@ -223,21 +211,18 @@ export default function HomePage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <Reveal className="max-w-2xl">
-            <p className="eyebrow text-clay">{t("Two layouts", "نوعان من الشقق")}</p>
+            <p className="eyebrow text-clay">{t.home.layoutsEyebrow}</p>
             <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl">
-              {t("Room for the whole family.", "مساحة تتسع للعائلة كلها.")}
+              {t.home.layoutsTitle}
             </h2>
             <p className="mt-6 text-lg text-ink-soft">
-              {t(
-                "Every apartment has a dining area and a washing machine.",
-                "كل شقة تحتوي على مكان لتناول الطعام وغسالة ملابس."
-              )}
+              {t.home.layoutsText}
             </p>
           </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {roomTypes.map((type, i) => (
-              <Reveal key={type.en} delay={i * 0.1}>
+              <Reveal key={type.key} delay={i * 0.1}>
                 <article className="group relative overflow-hidden rounded-3xl bg-night text-white on-dark">
                   <div className="relative aspect-[4/5] sm:aspect-[5/4]">
                     <Image
@@ -251,20 +236,20 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-linear-to-t from-night via-night/50 to-transparent" />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                    <p className="eyebrow text-brass">{t("Apartment type", "نوع الشقة")}</p>
-                    <h3 className="font-display mt-3 text-3xl sm:text-4xl">{t(type.en, type.ar)}</h3>
+                    <p className="eyebrow text-brass">{t.roomTypes.label}</p>
+                    <h3 className="font-display mt-3 text-3xl sm:text-4xl">{t.roomTypes[type.key].name}</h3>
                     <ul className="mt-5 flex flex-wrap gap-2 text-sm">
                       <li className="flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-2 backdrop-blur">
                         <Icon name="bed" className="h-4 w-4" />
-                        {t(type.detailEn, type.detailAr)}
+                        {t.roomTypes[type.key].detail}
                       </li>
                       <li className="flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-2 backdrop-blur">
                         <Icon name="dining" className="h-4 w-4" />
-                        {t("Dining area", "مكان للطعام")}
+                        {t.roomTypes.diningArea}
                       </li>
                       <li className="flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-2 backdrop-blur">
                         <Icon name="washer" className="h-4 w-4" />
-                        {t("Washing machine", "غسالة")}
+                        {t.amenities.washer}
                       </li>
                     </ul>
                   </div>
@@ -280,16 +265,16 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <Reveal className="flex items-end justify-between gap-6">
             <div>
-              <p className="eyebrow text-clay">{t("The apartments", "الشقق")}</p>
+              <p className="eyebrow text-clay">{t.home.railEyebrow}</p>
               <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl">
-                {t("Pick your place.", "اختر شقتك.")}
+                {t.home.railTitle}
               </h2>
             </div>
             <div className="hidden gap-2 md:flex">
               <button
                 type="button"
                 onClick={() => scrollRail(-1)}
-                aria-label={t("Previous apartments", "الشقق السابقة")}
+                aria-label={t.home.railPrev}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors hover:border-ink"
               >
                 <Icon name="chevron" className="h-5 w-5 -scale-x-100 rtl:scale-x-100" />
@@ -297,7 +282,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => scrollRail(1)}
-                aria-label={t("More apartments", "المزيد من الشقق")}
+                aria-label={t.home.railNext}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors hover:border-ink"
               >
                 <Icon name="chevron" className="h-5 w-5 rtl:-scale-x-100" />
@@ -331,9 +316,9 @@ export default function HomePage() {
                 </span>
               </div>
               <div className="mt-4 flex items-baseline justify-between gap-3">
-                <h3 className="font-display text-2xl">{t(apt.titleEn, apt.titleAr)}</h3>
+                <h3 className="font-display text-2xl">{t.common.apartment(apt.id)}</h3>
                 <p className="text-sm text-muted">
-                  <span className="font-semibold text-ink">{apt.priceMAD}</span> {t("MAD / night", "درهم / ليلة")}
+                  <span className="font-semibold text-ink">{apt.priceMAD}</span> {t.common.perNight}
                 </p>
               </div>
             </Link>
@@ -345,23 +330,20 @@ export default function HomePage() {
       <section className="on-dark relative overflow-hidden bg-night py-24 text-paper md:py-32">
         <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-10">
           <Reveal>
-            <p className="eyebrow text-brass">{t("Location", "الموقع")}</p>
+            <p className="eyebrow text-brass">{t.home.locationEyebrow}</p>
             <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
-              {t("In the centre of Zaio.", "في وسط مدينة زايو.")}
+              {t.home.locationTitle}
             </h2>
             <p className="mt-6 max-w-md text-lg text-paper/75">
-              {t(
-                "Find us in the centre of Zaio, in the province of Nador. Open the map for directions.",
-                "تجدوننا في وسط مدينة زايو، إقليم الناظور. افتح الخريطة للاتجاهات."
-              )}
+              {t.home.locationText}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a href={MAPS_HREF} target="_blank" rel="noopener noreferrer" className="btn bg-paper text-ink hover:bg-white">
                 <Icon name="pin" className="h-5 w-5" />
-                {t("Open in Google Maps", "افتح في خرائط جوجل")}
+                {t.common.openInMaps}
               </a>
               <Link href="/contact" className="btn btn-glass">
-                {t("Contact details", "معلومات الاتصال")}
+                {t.home.contactDetails}
               </Link>
             </div>
           </Reveal>
@@ -373,7 +355,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="group relative block overflow-hidden rounded-3xl border border-white/10 bg-night-soft p-8 sm:p-10"
             >
-              <span className="sr-only">{t("Open the location in Google Maps", "افتح الموقع في خرائط جوجل")}</span>
+              <span className="sr-only">{t.home.openLocation}</span>
               <div
                 className="absolute inset-0 opacity-[0.07]"
                 aria-hidden="true"
@@ -410,18 +392,15 @@ export default function HomePage() {
         <Reveal className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <div className="checker mx-auto h-3.5 w-28 opacity-80" aria-hidden="true" />
           <h2 className="font-display mt-10 text-4xl leading-[1.05] sm:text-6xl">
-            {t("Ready to book your stay?", "هل أنت مستعد لحجز إقامتك؟")}
+            {t.home.ctaTitle}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-ink-soft">
-            {t(
-              "Message or call us to check availability. We are reachable around the clock.",
-              "راسلنا أو اتصل بنا للتحقق من التوافر. نحن متاحون على مدار الساعة."
-            )}
+            {t.home.ctaText}
           </p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-clay">
               <Icon name="whatsapp" className="h-5 w-5" />
-              {t("Book on WhatsApp", "احجز عبر واتساب")}
+              {t.common.bookOnWhatsApp}
             </a>
             <a href={PHONE_HREF} className="btn btn-line">
               <Icon name="phone" className="h-5 w-5" />

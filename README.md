@@ -1,37 +1,42 @@
-# إقامة الحرمين (Iqamat Al-Haramain) - Moroccan Hotel Website
+# إقامة الحرمين (Iqamat Al-Haramain) - Apartment hotel website
 
-A beautiful, responsive static website for a Moroccan hotel in Zaio, showcasing 8 comfortable apartments with authentic hospitality.
+Website for Iqamat Al-Haramain, an apartment hotel in Zaio, Morocco, with 8 apartments.
 
-## 🌟 Features
+## Features
 
-- **Mobile-First, Responsive Design**: Looks and works perfectly on all devices
-- **Bilingual Support**: Arabic and English language switching with RTL support
-- **Modern UI**: Clean, professional design with Moroccan-inspired color scheme
-- **Always-Visible Language Switcher**: Instantly accessible at the top of every page
-- **Contact Integration**: WhatsApp and phone contact options
-- **Google Maps Integration**: Direct link and embed with precise coordinates
-- **Quick Info Buttons**: All quick links (call, WhatsApp, map) styled as clear, clickable buttons
-- **Clear Room Types**: Large (two-bedroom) and small/medium (one-bedroom with extra beds), all with dining area and washing machine
+- **Mobile-first, responsive design**, with booking on WhatsApp one tap away
+- **Six languages**: English, Français, Nederlands, Deutsch, Español and العربية (Arabic uses a right-to-left layout)
+- **Remembers the language**: defaults to the browser language, and links can force one with `?lang=fr` (or any other code)
+- **Contact integration**: WhatsApp, phone and Google Maps
+- **Apartment galleries**: every apartment has its own photo gallery
+- **Room types**: large (two bedrooms) and small/medium (one bedroom with extra beds), all with a dining area and a washing machine
 
-## 🚀 Quick Start
+## Quick start
 
-1. **Clone or Download** the project files
-2. **Open `index.html`** in your web browser to view the website
-3. **Switch languages** using the always-visible language switcher
+The app is a Next.js project in the `nextjs/` folder.
 
-**Deployment**: This website was deployed using Netlify.
+```bash
+cd nextjs
+npm ci
+npm run dev
+```
 
-## 🔧 Technical Details
+Then open http://localhost:3000.
 
-### Technologies Used
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with CSS Grid and Flexbox
-- **JavaScript**: Vanilla JS for interactivity and language switching
-- **Font Awesome**: Icons
-- **Google Fonts**: Amiri (Arabic) and Inter (English)
+Other scripts: `npm run lint`, `npm run build` and `npm run start`.
 
-## 📄 License
+## Deployment
+
+The site is hosted on Vercel. Image optimisation (`next/image`) relies on Vercel's image service.
+
+## Technical details
+
+- **Next.js 16** (App Router), **React 19**, **TypeScript**
+- **Tailwind CSS 4** for styling and **framer-motion** for motion
+- **Fonts** via `next/font`: Fraunces and Manrope (Latin), El Messiri and IBM Plex Sans Arabic (Arabic)
+- **Translations** live in `nextjs/src/lib/i18n/`, with one file per language. To add a language, copy `en.ts`, translate it, and register it in `index.ts`.
+- **Apartment data** (photos and prices) is in `nextjs/src/lib/apartments.ts`. Contact details are in `nextjs/src/lib/site.ts`.
+
+## License
 
 This project is open source and available under the MIT License.
-
----

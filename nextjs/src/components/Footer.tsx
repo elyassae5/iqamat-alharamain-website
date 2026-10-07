@@ -29,28 +29,25 @@ export default function Footer() {
               Iqamat Al-Haramain
             </p>
             <p className="mt-6 max-w-sm text-paper/75">
-              {t(
-                "Your home away from home in the heart of Zaio, Morocco.",
-                "بيتك الثاني في قلب مدينة زايو، المغرب."
-              )}
+              {t.footer.tagline}
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
             <div>
-              <h2 className="eyebrow text-brass">{t("Explore", "تصفح")}</h2>
+              <h2 className="eyebrow text-brass">{t.footer.explore}</h2>
               <ul className="mt-5 space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-paper/80 transition-colors hover:text-white">
-                      {t(link.en, link.ar)}
+                      {t.nav[link.key]}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h2 className="eyebrow text-brass">{t("Contact", "تواصل")}</h2>
+              <h2 className="eyebrow text-brass">{t.footer.contact}</h2>
               <ul className="mt-5 space-y-3 text-paper/80">
                 <li>
                   <a href={PHONE_HREF} className="transition-colors hover:text-white" dir="ltr">
@@ -69,20 +66,20 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href={MAPS_HREF} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
-                    {t("Zaio, Morocco", "زايو، المغرب")}
+                    {t.common.zaioMorocco}
                   </a>
                 </li>
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <h2 className="eyebrow text-brass">{t("Your stay", "إقامتك")}</h2>
+              <h2 className="eyebrow text-brass">{t.footer.yourStay}</h2>
               <dl className="mt-5 space-y-3 text-paper/80">
                 <div className="flex justify-between gap-4 sm:block">
-                  <dt>{t("Check-in", "تسجيل الوصول")}</dt>
+                  <dt>{t.common.checkIn}</dt>
                   <dd className="font-semibold text-paper">{CHECK_IN}</dd>
                 </div>
                 <div className="flex justify-between gap-4 sm:block">
-                  <dt>{t("Check-out", "المغادرة")}</dt>
+                  <dt>{t.common.checkOut}</dt>
                   <dd className="font-semibold text-paper">{CHECK_OUT}</dd>
                 </div>
               </dl>
@@ -93,7 +90,7 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-start gap-6 border-t border-white/10 py-8 text-sm text-paper/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
             <span dir="ltr">&copy; {new Date().getFullYear()} Iqamat Al-Haramain.</span>{" "}
-            {t("All rights reserved.", "جميع الحقوق محفوظة.")}
+            {t.footer.rights}
           </p>
           <a
             href="https://www.lanceerstudio.nl"

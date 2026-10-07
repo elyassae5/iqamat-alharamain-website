@@ -17,36 +17,25 @@ export function whatsappLink(message?: string) {
 }
 
 export const navLinks = [
-  { href: "/", en: "Home", ar: "الرئيسية" },
-  { href: "/rooms", en: "Apartments", ar: "الشقق" },
-  { href: "/contact", en: "Contact", ar: "اتصل بنا" },
-];
+  { href: "/", key: "home" },
+  { href: "/rooms", key: "apartments" },
+  { href: "/contact", key: "contact" },
+] as const;
 
 // Facts carried over from the previous site. Do not add items that are not true for the property.
+// Labels live in the language files under `amenities`.
 export const amenities = [
-  { icon: "home", en: "8 apartments", ar: "8 شقق" },
-  { icon: "pin", en: "Central location in Zaio", ar: "موقع مركزي في زايو" },
-  { icon: "wallet", en: "Affordable prices", ar: "أسعار مناسبة" },
-  { icon: "wifi", en: "Free WiFi", ar: "واي فاي مجاني" },
-  { icon: "snow", en: "Air conditioning", ar: "مكيف هواء" },
-  { icon: "family", en: "Family friendly", ar: "مناسب للعائلات" },
-  { icon: "clock", en: "Reachable 24/7", ar: "متاحون 24/7" },
-  { icon: "washer", en: "Washing machine", ar: "غسالة ملابس" },
+  { icon: "home", key: "apartments" },
+  { icon: "pin", key: "central" },
+  { icon: "wallet", key: "affordable" },
+  { icon: "wifi", key: "wifi" },
+  { icon: "snow", key: "aircon" },
+  { icon: "family", key: "family" },
+  { icon: "clock", key: "reachable" },
+  { icon: "washer", key: "washer" },
 ] as const;
 
 export const roomTypes = [
-  {
-    en: "Large",
-    ar: "كبيرة",
-    detailEn: "Two bedrooms",
-    detailAr: "غرفتا نوم",
-    image: "/assets/apartment2/Screenshot 2025-07-30 162534.png",
-  },
-  {
-    en: "Small and medium",
-    ar: "صغيرة ومتوسطة",
-    detailEn: "One bedroom with extra beds",
-    detailAr: "غرفة نوم واحدة مع أسرّة إضافية",
-    image: "/assets/apartment5/Screenshot 2025-08-08 201626.png",
-  },
+  { key: "large", image: "/assets/apartment2/Screenshot 2025-07-30 162534.png" },
+  { key: "small", image: "/assets/apartment5/Screenshot 2025-08-08 201626.png" },
 ] as const;

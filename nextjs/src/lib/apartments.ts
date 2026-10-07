@@ -1,9 +1,6 @@
+// Titles and descriptions are translated in src/lib/i18n (apartmentDescriptions, keyed by id).
 export interface Apartment {
   id: number;
-  titleEn: string;
-  titleAr: string;
-  descriptionEn: string;
-  descriptionAr: string;
   photoCount: number;
   coverImage: string;
   images: string[];
@@ -14,10 +11,6 @@ export interface Apartment {
 export const apartments: Apartment[] = [
   {
     id: 1,
-    titleEn: "Apartment 1",
-    titleAr: "الشقة 1",
-    descriptionEn: "A well-appointed apartment with a warm, inviting atmosphere and all modern comforts for a relaxing stay.",
-    descriptionAr: "شقة مجهزة بأجواء دافئة ومريحة مع جميع وسائل الراحة الحديثة لإقامة ممتعة.",
     photoCount: 9,
     coverImage: "/assets/apartment1/Screenshot 2025-08-08 200037.png",
     images: [
@@ -36,10 +29,6 @@ export const apartments: Apartment[] = [
   },
   {
     id: 2,
-    titleEn: "Apartment 2",
-    titleAr: "الشقة 2",
-    descriptionEn: "A spacious and elegantly furnished apartment offering a premium experience in the heart of Zaio.",
-    descriptionAr: "شقة واسعة ومفروشة بأناقة تقدم تجربة فاخرة في قلب مدينة زايو.",
     photoCount: 15,
     coverImage: "/assets/apartment2/Screenshot 2025-07-30 162749.png",
     images: [
@@ -64,10 +53,6 @@ export const apartments: Apartment[] = [
   },
   {
     id: 3,
-    titleEn: "Apartment 3",
-    titleAr: "الشقة 3",
-    descriptionEn: "An elegant retreat combining Moroccan warmth with contemporary design, perfect for families and couples.",
-    descriptionAr: "ملاذ أنيق يجمع بين الدفء المغربي والتصميم المعاصر، مثالي للعائلات والأزواج.",
     photoCount: 12,
     coverImage: "/assets/apartment3/Screenshot 2025-07-30 164151.png",
     images: [
@@ -89,10 +74,6 @@ export const apartments: Apartment[] = [
   },
   {
     id: 4,
-    titleEn: "Apartment 4",
-    titleAr: "الشقة 4",
-    descriptionEn: "A beautifully designed apartment offering generous living space and quality furnishings throughout.",
-    descriptionAr: "شقة مصممة بشكل جميل تقدم مساحة معيشية واسعة وأثاثاً عالي الجودة.",
     photoCount: 13,
     coverImage: "/assets/apartment4/Screenshot 2025-07-30 160700.png",
     images: [
@@ -115,10 +96,6 @@ export const apartments: Apartment[] = [
   },
   {
     id: 5,
-    titleEn: "Apartment 5",
-    titleAr: "الشقة 5",
-    descriptionEn: "A charming and comfortable apartment ideal for both short stays and extended visits to Zaio.",
-    descriptionAr: "شقة ساحرة ومريحة مثالية للإقامات القصيرة والزيارات الطويلة في زايو.",
     photoCount: 10,
     coverImage: "/assets/apartment5/Screenshot 2025-08-08 201619.png",
     images: [
@@ -138,10 +115,6 @@ export const apartments: Apartment[] = [
   },
   {
     id: 7,
-    titleEn: "Apartment 7",
-    titleAr: "الشقة 7",
-    descriptionEn: "A refined apartment with thoughtful details, offering a serene and comfortable home-away-from-home.",
-    descriptionAr: "شقة راقية مع تفاصيل مدروسة، تقدم بيتاً هادئاً ومريحاً بعيداً عن الوطن.",
     photoCount: 9,
     coverImage: "/assets/apartment7/Screenshot 2025-08-19 220355.png",
     images: [
@@ -160,10 +133,6 @@ export const apartments: Apartment[] = [
   },
   {
     id: 8,
-    titleEn: "Apartment 8",
-    titleAr: "الشقة 8",
-    descriptionEn: "A welcoming apartment with a warm Moroccan touch, offering everything you need for a perfect stay.",
-    descriptionAr: "شقة ترحيبية بلمسة مغربية دافئة، تقدم كل ما تحتاجه لإقامة مثالية.",
     photoCount: 7,
     coverImage: "/assets/apartment8/Screenshot 2025-08-19 221629.png",
     images: [

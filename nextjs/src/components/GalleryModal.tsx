@@ -80,7 +80,7 @@ export default function GalleryModal({ images, index, title, onClose, onIndexCha
       ref={dialog}
       role="dialog"
       aria-modal="true"
-      aria-label={t(`${title} photos`, `صور ${title}`)}
+      aria-label={t.gallery.label(title)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -99,7 +99,7 @@ export default function GalleryModal({ images, index, title, onClose, onIndexCha
           ref={closeButton}
           type="button"
           onClick={onClose}
-          aria-label={t("Close gallery", "إغلاق المعرض")}
+          aria-label={t.gallery.close}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
         >
           <Icon name="close" className="h-5 w-5" />
@@ -122,7 +122,7 @@ export default function GalleryModal({ images, index, title, onClose, onIndexCha
           >
             <Image
               src={images[index]}
-              alt={t(`${title}, photo ${index + 1} of ${count}`, `${title}، الصورة ${index + 1} من ${count}`)}
+              alt={t.gallery.photoAlt(title, index + 1, count)}
               fill
               quality={75}
               sizes="100vw"
@@ -135,7 +135,7 @@ export default function GalleryModal({ images, index, title, onClose, onIndexCha
         <button
           type="button"
           onClick={() => go(-1)}
-          aria-label={t("Previous photo", "الصورة السابقة")}
+          aria-label={t.gallery.previous}
           className="absolute start-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 backdrop-blur transition-colors hover:bg-white/20 sm:flex"
         >
           <Icon name="chevron" className="h-5 w-5 -scale-x-100 rtl:scale-x-100" />
@@ -143,7 +143,7 @@ export default function GalleryModal({ images, index, title, onClose, onIndexCha
         <button
           type="button"
           onClick={() => go(1)}
-          aria-label={t("Next photo", "الصورة التالية")}
+          aria-label={t.gallery.next}
           className="absolute end-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 backdrop-blur transition-colors hover:bg-white/20 sm:flex"
         >
           <Icon name="chevron" className="h-5 w-5 rtl:-scale-x-100" />
@@ -157,7 +157,7 @@ export default function GalleryModal({ images, index, title, onClose, onIndexCha
             key={src}
             data-index={i}
             onClick={() => onIndexChange(i)}
-            aria-label={t(`Show photo ${i + 1}`, `عرض الصورة ${i + 1}`)}
+            aria-label={t.gallery.show(i + 1)}
             aria-current={i === index ? "true" : undefined}
             className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-lg transition-opacity ${
               i === index ? "opacity-100 ring-2 ring-brass" : "opacity-45 hover:opacity-80"
