@@ -2,205 +2,187 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { apartments } from "@/lib/apartments";
 import { useLanguage } from "@/lib/language-context";
+import { CHECK_IN, CHECK_OUT, roomTypes, STARTING_PRICE_MAD, whatsappLink } from "@/lib/site";
 import GalleryModal from "@/components/GalleryModal";
+import Icon from "@/components/Icon";
+import Reveal from "@/components/Reveal";
 
 export default function RoomsPage() {
   const { t } = useLanguage();
-  const [selected, setSelected] = useState<{
-    apartmentIndex: number;
-    imageIndex: number;
-  } | null>(null);
-
-  const openGallery = (aptIdx: number, imgIdx = 0) =>
-    setSelected({ apartmentIndex: aptIdx, imageIndex: imgIdx });
-
-  const closeGallery = () => setSelected(null);
-
-  const prev = () => {
-    if (!selected) return;
-    const apt = apartments[selected.apartmentIndex];
-    setSelected({
-      ...selected,
-      imageIndex:
-        (selected.imageIndex - 1 + apt.images.length) % apt.images.length,
-    });
-  };
-
-  const next = () => {
-    if (!selected) return;
-    const apt = apartments[selected.apartmentIndex];
-    setSelected({
-      ...selected,
-      imageIndex: (selected.imageIndex + 1) % apt.images.length,
-    });
-  };
-
-  const activeApt = selected !== null ? apartments[selected.apartmentIndex] : null;
+  const [open, setOpen] = useState<{ apt: number; img: number } | null>(null);
+  const active = open ? apartments[open.apt] : null;
 
   return (
     <>
-      {/* ─── PAGE HEADER ─── */}
-      <section className="bg-linear-to-br from-brown-deep via-brown-dark to-brown pt-40 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 dot-texture-sm pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
+      {/* HEADER */}
+      <section className="pt-32 md:pt-44">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <Reveal>
+            <p className="eyebrow text-clay">{t.rooms.eyebrow}</p>
+            <h1 className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] sm:text-6xl lg:text-[5.5rem]">
+              {t.rooms.title}
+            </h1>
+            <p className="mt-7 max-w-xl text-lg text-ink-soft">
+              {t.rooms.intro}
+            </p>
+          </Reveal>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xs tracking-[0.3em] text-white/60 uppercase font-medium mb-4"
-          >
-            {t("Our Collection", "مجموعتنا")}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-5xl lg:text-6xl font-bold text-white mb-5"
-          >
-            {t("Our Apartments", "شققنا")}
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="flex justify-center mb-6"
-          >
-            <div className="h-px w-16 bg-linear-to-r from-transparent via-white/40 to-transparent" />
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-white/75 text-xl max-w-xl mx-auto leading-relaxed"
-          >
-            {t(
-              "Discover our eight elegantly appointed apartments, each offering comfort and authentic Moroccan charm in the heart of Zaio.",
-              "اكتشف شققنا الثمانية الأنيقة، كل منها يقدم راحة وسحراً مغربياً أصيلاً في قلب مدينة زايو."
-            )}
-          </motion.p>
-        </div>
-      </section>
+          <Reveal delay={0.1}>
+            <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-4">
+              <div className="bg-paper p-4 sm:p-6">
+                <dt className="text-sm text-muted">{t.rooms.fromPerNight}</dt>
+                <dd className="font-display mt-2 text-lg sm:text-2xl">
+                  {STARTING_PRICE_MAD} {t.common.mad}
+                </dd>
+              </div>
+              <div className="bg-paper p-4 sm:p-6">
+                <dt className="text-sm text-muted">{t.rooms.checkInOut}</dt>
+                <dd className="font-display mt-2 text-lg sm:text-2xl">
+                  <span dir="ltr">{CHECK_IN} / {CHECK_OUT}</span>
+                </dd>
+              </div>
+              {roomTypes.map((type) => (
+                <div key={type.key} className="bg-paper p-4 sm:p-6">
+                  <dt className="text-sm text-muted">{t.roomTypes[type.key].name}</dt>
+                  <dd className="font-display mt-2 text-lg sm:text-2xl">{t.roomTypes[type.key].detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
 
-      {/* ─── APARTMENTS GRID ─── */}
-      <section className="bg-ivory py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {apartments.map((apt, i) => (
-              <motion.div
+          <nav
+            aria-label={t.rooms.jumpTo}
+            className="no-scrollbar -mx-4 mt-10 flex gap-2 overflow-x-auto px-4 sm:mx-0 sm:px-0"
+          >
+            {apartments.map((apt) => (
+              <a
                 key={apt.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group cursor-pointer card-lift rounded-sm overflow-hidden bg-ivory"
-                onClick={() => openGallery(i)}
+                href={`#apartment-${apt.id}`}
+                className="shrink-0 rounded-full border border-line px-4 py-2 text-sm font-semibold transition-colors hover:border-ink hover:bg-ink hover:text-paper"
               >
-                {/* Image */}
-                <div className="relative aspect-4/3 overflow-hidden">
-                  <Image
-                    src={apt.coverImage}
-                    alt={t(apt.titleEn, apt.titleAr)}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-brown-deep/70 via-brown-deep/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-
-                  {/* Photo count */}
-                  <div className="absolute top-4 right-4 bg-brown-deep/70 backdrop-blur-sm px-3 py-1.5 flex items-center gap-1.5">
-                    <svg className="w-3 h-3 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-white text-xs">{apt.photoCount}</span>
-                  </div>
-
-                  {/* View gallery hint */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-white text-xs tracking-[0.25em] uppercase border border-white/60 px-4 py-2">
-                      {t("View Gallery", "عرض المعرض")}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card content */}
-                <div className="pt-5 pb-6 px-4 border-b border-cream-dark">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-display text-xl font-semibold text-brown-dark group-hover:text-gold transition-colors">
-                      {t(apt.titleEn, apt.titleAr)}
-                    </h3>
-                    <div className="text-right">
-                      <p className="text-xs text-brown-medium line-through">
-                        {apt.originalPriceMAD} MAD
-                      </p>
-                      <p className="text-amber font-bold text-base">
-                        {apt.priceMAD} MAD
-                        <span className="text-xs font-normal text-brown-medium">
-                          {" "}/ {t("night", "ليلة")}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-brown text-base leading-relaxed">
-                    {t(apt.descriptionEn, apt.descriptionAr)}
-                  </p>
-                </div>
-              </motion.div>
+                {t.common.apartment(apt.id)}
+              </a>
             ))}
-          </div>
+          </nav>
         </div>
       </section>
 
-      {/* ─── BOOKING CTA ─── */}
-      <section className="bg-cream py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-xs tracking-[0.3em] text-gold uppercase font-medium mb-4">
-              {t("Reserve Now", "احجز الآن")}
-            </p>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-brown-deep mb-5">
-              {t("Found Your Perfect Apartment?", "وجدت شقتك المثالية؟")}
-            </h2>
-            <p className="text-brown mb-8 leading-relaxed">
-              {t(
-                "Contact us via WhatsApp or phone to check availability and confirm your booking.",
-                "تواصل معنا عبر واتساب أو الهاتف للتحقق من التوافر وتأكيد حجزك."
-              )}
-            </p>
-            <a
-              href="https://wa.me/212670959747"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-white text-sm tracking-widest uppercase font-medium hover:bg-gold-dark transition-colors"
-            >
-              {t("Book via WhatsApp", "احجز عبر واتساب")}
-              <span>→</span>
-            </a>
-          </motion.div>
+      {/* APARTMENTS */}
+      <section className="pb-24 pt-10 md:pb-32 md:pt-16">
+        <div className="mx-auto max-w-7xl space-y-20 px-4 sm:px-6 md:space-y-32 lg:px-10">
+          {apartments.map((apt, i) => {
+            const flip = i % 2 === 1;
+            const title = t.common.apartment(apt.id);
+            const extra = apt.images.length - 3;
+            const secondary = apt.images.filter((src) => src !== apt.coverImage).slice(0, 2);
+            const message = t.rooms.whatsappMessage(title);
+            return (
+              <article
+                key={apt.id}
+                id={`apartment-${apt.id}`}
+                className="grid scroll-mt-28 gap-8 lg:grid-cols-12 lg:items-center lg:gap-14"
+              >
+                <Reveal className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setOpen({ apt: i, img: apt.images.indexOf(apt.coverImage) })}
+                      aria-label={t.rooms.openGallery(title)}
+                      className="group relative col-span-3 aspect-[4/3] overflow-hidden rounded-3xl bg-stone"
+                    >
+                      <Image
+                        src={apt.coverImage}
+                        alt=""
+                        fill
+                        quality={70}
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="photo-grade object-cover transition-transform duration-[1.4s] ease-(--ease-soft) group-hover:scale-105"
+                      />
+                    </button>
+                    {secondary.map((src) => (
+                        <button
+                          type="button"
+                          key={src}
+                          onClick={() => setOpen({ apt: i, img: apt.images.indexOf(src) })}
+                          aria-label={t.rooms.openGallery(title)}
+                          className="group relative aspect-square overflow-hidden rounded-2xl bg-stone"
+                        >
+                          <Image
+                            src={src}
+                            alt=""
+                            fill
+                            quality={70}
+                            sizes="(max-width: 1024px) 33vw, 20vw"
+                            className="photo-grade object-cover transition-transform duration-[1.4s] ease-(--ease-soft) group-hover:scale-105"
+                          />
+                        </button>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setOpen({ apt: i, img: 0 })}
+                      className="flex aspect-square flex-col items-center justify-center gap-1 rounded-2xl bg-ink text-paper transition-colors hover:bg-night-soft"
+                    >
+                      <Icon name="images" className="h-6 w-6 text-brass" />
+                      <span dir="ltr" className="font-display text-2xl leading-none">+{extra}</span>
+                      <span className="text-xs text-paper/70">{t.common.photos}</span>
+                    </button>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={0.1} className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
+                  <p className="font-display text-7xl leading-none text-clay/25 md:text-8xl" aria-hidden="true">
+                    {String(apt.id).padStart(2, "0")}
+                  </p>
+                  <h2 className="font-display mt-2 text-4xl sm:text-5xl">{title}</h2>
+                  <p className="mt-5 text-lg text-ink-soft">{t.apartmentDescriptions[apt.id]}</p>
+
+                  <div className="mt-7 flex items-end gap-3 border-y border-line py-5">
+                    <p className="font-display text-4xl">
+                      {apt.priceMAD}
+                      <span className="ms-1.5 font-sans text-base text-muted">{t.common.perNight}</span>
+                    </p>
+                    <p className="mb-1 text-sm text-muted">
+                      <span className="sr-only">{t.rooms.was} </span>
+                      <s>{apt.originalPriceMAD} {t.common.mad}</s>
+                    </p>
+                  </div>
+
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                    <a
+                      href={whatsappLink(message)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-clay"
+                    >
+                      <Icon name="whatsapp" className="h-5 w-5" />
+                      {t.rooms.ask}
+                    </a>
+                    <button type="button" onClick={() => setOpen({ apt: i, img: 0 })} className="btn btn-line">
+                      <Icon name="images" className="h-5 w-5" />
+                      {t.rooms.viewAll(apt.photoCount)}
+                    </button>
+                  </div>
+                </Reveal>
+              </article>
+            );
+          })}
         </div>
       </section>
 
-      {/* Gallery modal */}
-      {selected !== null && activeApt && (
-        <GalleryModal
-          images={activeApt.images}
-          currentIndex={selected.imageIndex}
-          title={t(activeApt.titleEn, activeApt.titleAr)}
-          onClose={closeGallery}
-          onPrev={prev}
-          onNext={next}
-        />
-      )}
+      <AnimatePresence>
+        {open && active && (
+          <GalleryModal
+            images={active.images}
+            index={open.img}
+            title={t.common.apartment(active.id)}
+            onClose={() => setOpen(null)}
+            onIndexChange={(img) => setOpen({ apt: open.apt, img })}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

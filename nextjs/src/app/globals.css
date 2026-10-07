@@ -1,92 +1,189 @@
 @import "tailwindcss";
 
 @theme {
-  /* Backgrounds — warm whites with life */
-  --color-ivory: #FFFEF9;
-  --color-cream: #FFF7ED;
-  --color-cream-dark: #FFE4B8;
+  /* Surfaces: warm limestone and paper */
+  --color-sand: #f3ede3;
+  --color-paper: #fbf8f3;
+  --color-stone: #e5dccd;
+  --color-line: #d9cebd;
 
-  /* Primary: rich vibrant blue */
-  --color-gold: #1A60E8;
-  --color-gold-light: #4A8AFF;
-  --color-gold-dark: #0F48C0;
-  --color-gold-muted: #BDD4FF;
+  /* Text */
+  --color-ink: #1d1b18;
+  --color-ink-soft: #46413a;
+  --color-muted: #6a6257;
 
-  /* Warm amber accent — makes prices, highlights, icons warm & exciting */
-  --color-amber: #F0A020;
-  --color-amber-dark: #C88010;
-  --color-amber-light: #FFD580;
+  /* Accent: terracotta clay, taken from the plaster walls in the photos */
+  --color-clay: #a3441c;
+  --color-clay-dark: #83351a;
+  --color-clay-soft: #ecd8ca;
 
-  /* Deep sections — deep rich navy */
-  --color-brown-deep: #0C1F6A;
-  --color-brown-dark: #142E98;
-  --color-brown: #1E44C8;
-  --color-brown-medium: #5A88D0;
-  --color-brown-light: #9BBDE8;
+  /* Dark bands */
+  --color-night: #191815;
+  --color-night-soft: #2a2824;
+  --color-brass: #d1ad74;
 
-  --font-display: var(--font-playfair);
-  --font-body: var(--font-inter);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Arabic: dedicated typefaces, roomier line height, no letter spacing (it breaks joined letters). */
+:root[dir="rtl"] {
+  --font-display: var(--font-messiri), var(--font-plex-arabic), serif;
+  --font-sans: var(--font-plex-arabic), var(--font-manrope), system-ui, sans-serif;
+}
+:root[dir="rtl"] body {
+  line-height: 1.85;
+}
+:root[dir="rtl"] * {
+  letter-spacing: 0 !important;
+}
+:root[dir="rtl"] .font-display {
+  line-height: 1.4;
+}
+:root[dir="rtl"] .eyebrow {
+  text-transform: none;
+  font-size: 0.875rem;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
-  background-color: var(--color-ivory);
-  color: var(--color-brown-deep);
-  font-family: var(--font-inter), Georgia, serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+  line-height: 1.6;
 }
 
-/* Accent divider line utility */
-.gold-line {
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-  margin: 0 auto;
-}
-
-/* Playfair Display heading class */
+/* Fraunces: soft, high optical size for headlines */
 .font-display {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 50;
+  font-optical-sizing: auto;
 }
 
-/* Dot texture background */
-.dot-texture {
-  background-image: radial-gradient(#1D6FE8 1px, transparent 1px);
-  background-size: 30px 30px;
+@layer components {
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
 }
 
-.dot-texture-sm {
-  background-image: radial-gradient(#1D6FE8 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Visible, consistent focus ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--color-brass);
 }
 
-/* Card lift — depth and life */
-.card-lift {
-  box-shadow: 0 2px 20px rgba(12, 31, 106, 0.07), 0 1px 4px rgba(12, 31, 106, 0.04);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+.skip-link {
+  position: fixed;
+  inset-inline-start: 1rem;
+  top: -4rem;
+  z-index: 200;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  transition: top 0.2s;
 }
-.card-lift:hover {
-  box-shadow: 0 12px 40px rgba(12, 31, 106, 0.15), 0 2px 8px rgba(12, 31, 106, 0.08);
-  transform: translateY(-3px);
+.skip-link:focus {
+  top: 1rem;
 }
 
-/* Smooth image fade-in */
-img {
-  transition: opacity 0.3s ease;
-}
+@layer components {
+  /* Horseshoe arch mask used on feature photography */
+  .arch {
+    border-radius: 999px 999px 1.25rem 1.25rem;
+  }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-gold-muted);
-  border-radius: 3px;
+  /* Gentle shared grade so phone photos from different rooms sit together */
+  .photo-grade {
+    filter: saturate(0.9) contrast(1.03);
+  }
+
+  /* Checker motif, echoing the tiled floors */
+  .checker {
+    background-image: conic-gradient(
+      var(--color-ink) 25%,
+      transparent 0 50%,
+      var(--color-ink) 0 75%,
+      transparent 0
+    );
+    background-size: 14px 14px;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Shared buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition:
+      background-color 0.25s var(--ease-soft),
+      color 0.25s var(--ease-soft),
+      border-color 0.25s var(--ease-soft),
+      transform 0.25s var(--ease-soft);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-clay {
+    background: var(--color-clay);
+    color: #fff;
+  }
+  .btn-clay:hover {
+    background: var(--color-clay-dark);
+  }
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .btn-ink:hover {
+    background: var(--color-night-soft);
+  }
+  .btn-line {
+    border: 1px solid var(--color-ink);
+    color: var(--color-ink);
+  }
+  .btn-line:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .btn-glass {
+    border: 1px solid rgb(255 255 255 / 0.45);
+    color: #fff;
+    background: rgb(255 255 255 / 0.08);
+    backdrop-filter: blur(8px);
+  }
+  .btn-glass:hover {
+    background: rgb(255 255 255 / 0.18);
+  }
 }
