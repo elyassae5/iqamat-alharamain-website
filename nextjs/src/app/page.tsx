@@ -1,348 +1,434 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { apartments } from "@/lib/apartments";
 import { useLanguage } from "@/lib/language-context";
+import {
+  amenities,
+  CHECK_IN,
+  CHECK_OUT,
+  MAPS_HREF,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  roomTypes,
+  STARTING_PRICE_MAD,
+  whatsappLink,
+} from "@/lib/site";
+import Icon from "@/components/Icon";
+import Reveal from "@/components/Reveal";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  }),
-};
-
-const amenities = [
-  { icon: "🏠", en: "8 Apartments", ar: "8 شقق" },
-  { icon: "📍", en: "Central Location", ar: "موقع مركزي" },
-  { icon: "💰", en: "Affordable Prices", ar: "أسعار مناسبة" },
-  { icon: "📶", en: "Free WiFi", ar: "واي فاي مجاني" },
-  { icon: "❄️", en: "Air Conditioning", ar: "مكيف هواء" },
-  { icon: "👨‍👩‍👧", en: "Family Friendly", ar: "مناسب للعائلات" },
-  { icon: "📞", en: "24/7 Availability", ar: "متاح 24/7" },
-  { icon: "🫧", en: "Washing Machine", ar: "غسالة" },
-];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function HomePage() {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
+  const rail = useRef<HTMLDivElement>(null);
+
+  const scrollRail = (direction: 1 | -1) => {
+    const el = rail.current;
+    if (!el) return;
+    // In RTL the scroll axis runs the other way.
+    el.scrollBy({ left: direction * el.clientWidth * 0.8 * (isRTL ? -1 : 1), behavior: "smooth" });
+  };
 
   return (
     <>
-      {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-ivory">
-        {/* Dot texture */}
-        <div className="dot-texture absolute inset-0 opacity-[0.03] pointer-events-none" />
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: text */}
-            <div>
-              <motion.p
-                custom={0}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="text-xs tracking-[0.3em] text-gold uppercase font-medium mb-6"
-              >
-                {t("Welcome to", "مرحباً بكم في")}
-              </motion.p>
-
-              <motion.h1
-                custom={1}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="font-display text-5xl lg:text-7xl font-bold text-brown-deep leading-[1.05] mb-4"
-              >
-                {t("Iqamat", "إقامة")}
-                <br />
-                <span className="text-gold">
-                  {t("Al-Haramain", "الحرمين")}
-                </span>
-              </motion.h1>
-
-              <motion.div
-                custom={2}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="flex items-center gap-3 mb-8"
-              >
-                <div className="h-px w-12 bg-gold" />
-                <p className="text-xs tracking-[0.2em] text-brown-medium uppercase">
-                  {t("Zaio, Morocco", "زايو، المغرب")}
-                </p>
-                <div className="h-px w-12 bg-gold" />
-              </motion.div>
-
-              <motion.p
-                custom={3}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="text-brown text-lg leading-relaxed mb-10 max-w-md"
-              >
-                {t(
-                  "Eight elegantly appointed apartments offering warm Moroccan hospitality in the heart of Zaio. Whether you visit for business or leisure, a distinguished stay awaits.",
-                  "ثمان شقق أنيقة تقدم ضيافة مغربية دافئة في قلب مدينة زايو. سواء كانت زيارتك للعمل أو الترفيه، إقامة مميزة تنتظرك."
-                )}
-              </motion.p>
-
-              <motion.div
-                custom={4}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="flex flex-wrap gap-4"
-              >
-                <Link
-                  href="/rooms"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-white text-sm tracking-widest uppercase font-medium hover:bg-gold-dark transition-colors duration-200"
-                >
-                  {t("View Apartments", "شاهد الشقق")}
-                  <span>→</span>
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 border border-gold text-gold text-sm tracking-widest uppercase font-medium hover:bg-gold/10 transition-colors duration-200"
-                >
-                  {t("Contact Us", "تواصل معنا")}
-                </Link>
-              </motion.div>
-            </div>
-
-            {/* Right: image */}
-            <motion.div
-              custom={2}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="relative"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <Image
-                  src="/assets/apartment2/Screenshot 2025-07-30 162441.png"
-                  alt="Iqamat Al-Haramain apartment"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-brown-deep/40 via-transparent to-transparent" />
-              </div>
-
-              {/* Offset border */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/30 -z-10" />
-
-              {/* Price badge */}
-              <div className="absolute bottom-6 left-6 bg-brown-deep/95 backdrop-blur-sm px-5 py-4 border-l-4 border-amber">
-                <p className="text-amber text-xs tracking-[0.2em] uppercase mb-1 font-medium">
-                  {t("From", "ابتداءً من")}
-                </p>
-                <p className="font-display text-white text-3xl font-bold">
-                  499{" "}
-                  <span className="text-sm font-normal text-brown-light">
-                    MAD / {t("night", "ليلة")}
-                  </span>
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
+      {/* HERO */}
+      <section className="on-dark relative flex min-h-[100svh] items-end overflow-hidden bg-night text-white">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute inset-0"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.4, ease }}
         >
-          <div className="w-px h-12 bg-linear-to-b from-gold to-transparent" />
+          <Image
+            src="/assets/apartment2/Screenshot 2025-07-30 162441.png"
+            alt={t(
+              "Living room with a traditional Moroccan salon and tiled floor",
+              "صالون مغربي تقليدي بأرضية من البلاط"
+            )}
+            fill
+            preload
+            quality={70}
+            sizes="100vw"
+            className="photo-grade object-cover"
+          />
         </motion.div>
-      </section>
+        <div className="absolute inset-0 bg-linear-to-t from-night via-night/55 to-night/25" />
+        <div className="absolute inset-0 hidden bg-linear-to-r from-night/70 via-night/20 to-transparent lg:block rtl:bg-linear-to-l" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-night/60 to-transparent" />
 
-      {/* ─── AMENITIES ─── */}
-      <section className="bg-cream py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+        <div className="relative mx-auto w-full max-w-7xl px-4 pb-32 pt-32 sm:px-6 md:pb-20 lg:px-10">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease }}
+            className="eyebrow flex items-center gap-3 text-white/85"
           >
-            <p className="text-xs tracking-[0.3em] text-gold uppercase font-medium mb-4">
-              {t("Why Choose Us", "لماذا تختارنا")}
-            </p>
-            <h2
-              className="font-display text-4xl lg:text-5xl font-bold text-brown-deep"
-            >
-              {t("The Iqamat Experience", "تجربة إقامة الحرمين")}
-            </h2>
-            <div className="flex justify-center mt-5">
-              <div className="h-px w-16 bg-linear-to-r from-transparent via-gold to-transparent" />
-            </div>
-          </motion.div>
+            <span className="h-px w-8 bg-brass" />
+            {t("Apartments in Zaio, Morocco", "شقق في زايو، المغرب")}
+          </motion.p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {amenities.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className="card-lift bg-ivory rounded-sm p-6 text-center group cursor-default border border-cream-dark hover:border-gold/30 transition-colors duration-300"
-              >
-                <span className="text-4xl mb-3 block">{item.icon}</span>
-                <p className="text-sm font-semibold text-brown-dark tracking-wide group-hover:text-gold transition-colors">
-                  {t(item.en, item.ar)}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FEATURED APARTMENTS ─── */}
-      <section className="py-24 bg-ivory">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease }}
+            className="font-display mt-6 max-w-4xl text-[2.9rem] leading-[1.02] font-normal sm:text-6xl lg:text-[5.5rem]"
           >
-            <p className="text-xs tracking-[0.3em] text-gold uppercase font-medium mb-4">
-              {t("Our Collection", "مجموعتنا")}
-            </p>
-            <h2
-              className="font-display text-4xl lg:text-5xl font-bold text-brown-deep"
-            >
-              {t("Discover Our Apartments", "اكتشف شققنا")}
-            </h2>
-            <div className="flex justify-center mt-5">
-              <div className="h-px w-16 bg-linear-to-r from-transparent via-gold to-transparent" />
-            </div>
-          </motion.div>
+            {t("Your home away from home in Zaio.", "بيتك الثاني في قلب زايو.")}
+          </motion.h1>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                src: "/assets/apartment2/Screenshot 2025-07-30 162749.png",
-                en: "Apartment 2",
-                ar: "الشقة 2",
-              },
-              {
-                src: "/assets/apartment4/Screenshot 2025-07-30 160700.png",
-                en: "Apartment 4",
-                ar: "الشقة 4",
-              },
-              {
-                src: "/assets/apartment3/Screenshot 2025-07-30 164151.png",
-                en: "Apartment 3",
-                ar: "الشقة 3",
-              },
-            ].map((apt, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Link href="/rooms" className="group block card-lift rounded-sm overflow-hidden">
-                  <div className="relative aspect-4/3 overflow-hidden">
-                    <Image
-                      src={apt.src}
-                      alt={t(apt.en, apt.ar)}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-brown-deep/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="text-white text-xs tracking-widest uppercase border border-white/60 px-3 py-1.5">
-                        {t("View Gallery", "عرض المعرض")}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-ivory px-4 py-4 flex items-center justify-between border-t border-cream-dark">
-                    <p className="font-display text-brown-deep font-semibold">
-                      {t(apt.en, apt.ar)}
-                    </p>
-                    <p className="text-amber font-bold text-base">
-                      499 <span className="text-xs font-normal text-brown-medium">MAD</span>
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.45, ease }}
+            className="mt-6 max-w-xl text-lg text-white/85"
+          >
+            {t(
+              "Eight furnished apartments in the centre of town, for families, short stays and long visits home. Book directly with us.",
+              "ثماني شقق مفروشة في وسط المدينة، للعائلات وللإقامات القصيرة والزيارات الطويلة. احجز معنا مباشرة."
+            )}
+          </motion.p>
 
-          <div className="text-center">
-            <Link
-              href="/rooms"
-              className="inline-flex items-center gap-3 px-10 py-4 border border-gold text-gold text-sm tracking-widest uppercase font-medium hover:bg-gold hover:text-white transition-all duration-200"
-            >
-              {t("View All Apartments", "عرض جميع الشقق")}
-              <span>→</span>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.6, ease }}
+            className="mt-9 flex flex-col gap-3 sm:flex-row"
+          >
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-clay">
+              <Icon name="whatsapp" className="h-5 w-5" />
+              {t("Book on WhatsApp", "احجز عبر واتساب")}
+            </a>
+            <Link href="/rooms" className="btn btn-glass">
+              {t("See the apartments", "شاهد الشقق")}
+              <Icon name="arrow" className="h-4 w-4 rtl:-scale-x-100" />
             </Link>
+          </motion.div>
+
+          <motion.dl
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-white/20 pt-6"
+          >
+            <div>
+              <dt className="text-xs text-white/65 sm:text-sm">{t("From", "ابتداءً من")}</dt>
+              <dd className="font-display mt-1 text-2xl sm:text-3xl">
+                {STARTING_PRICE_MAD}
+                <span className="block font-sans text-xs text-white/70 sm:inline sm:ms-1.5 sm:text-sm">
+                  {t("MAD / night", "درهم / ليلة")}
+                </span>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs text-white/65 sm:text-sm">{t("Check-in", "الوصول")}</dt>
+              <dd className="font-display mt-1 text-2xl sm:text-3xl">{CHECK_IN}</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-white/65 sm:text-sm">{t("Check-out", "المغادرة")}</dt>
+              <dd className="font-display mt-1 text-2xl sm:text-3xl">{CHECK_OUT}</dd>
+            </div>
+          </motion.dl>
+        </div>
+      </section>
+
+      {/* INTRO */}
+      <section className="relative overflow-hidden py-24 md:py-36">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-12 lg:px-10">
+          <div className="lg:col-span-6">
+            <Reveal>
+              <p className="eyebrow text-clay">{t("Welcome", "أهلاً وسهلاً")}</p>
+              <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
+                {t(
+                  "A quiet base for family time in Zaio.",
+                  "مكان هادئ لقضاء وقت العائلة في زايو."
+                )}
+              </h2>
+              <p className="mt-7 max-w-lg text-lg text-ink-soft">
+                {t(
+                  "Iqamat Al-Haramain offers 8 comfortable apartments in the center of Zaio. Whether you are visiting for business or leisure, we provide a welcoming atmosphere and modern amenities for a pleasant stay.",
+                  "تقدم إقامة الحرمين 8 شقق مريحة في وسط مدينة زايو. سواء كانت زيارتك للعمل أو للترفيه، نوفر لك أجواء ترحيبية ووسائل راحة حديثة لإقامة ممتعة."
+                )}
+              </p>
+              <Link
+                href="/rooms"
+                className="group mt-9 inline-flex items-center gap-3 border-b border-ink pb-1 font-semibold"
+              >
+                {t("Explore the apartments", "اكتشف الشقق")}
+                <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="relative lg:col-span-6">
+            <Reveal className="relative mx-auto max-w-md lg:me-0">
+              <div className="arch relative aspect-[3/4] overflow-hidden bg-stone">
+                <Image
+                  src="/assets/apartment4/Screenshot 2025-07-30 160510.png"
+                  alt={t("Carved arch leading into a bedroom", "قوس منحوت يؤدي إلى غرفة نوم")}
+                  fill
+                  quality={70}
+                  sizes="(max-width: 1024px) 90vw, 448px"
+                  className="photo-grade object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-10 -start-2 w-[46%] overflow-hidden rounded-2xl border-[6px] border-sand shadow-[0_20px_50px_rgb(29_27_24/0.18)] sm:-start-16">
+                <div className="relative aspect-square">
+                  <Image
+                    src="/assets/apartment3/Screenshot 2025-07-30 164035.png"
+                    alt={t("Fitted kitchen with red cabinets", "مطبخ مجهز بخزائن حمراء")}
+                    fill
+                    quality={70}
+                    sizes="220px"
+                    className="photo-grade object-cover"
+                  />
+                </div>
+              </div>
+              <div className="checker absolute -top-4 -end-4 h-16 w-16 opacity-[0.12]" aria-hidden="true" />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ─── CTA ─── */}
-      <section className="bg-linear-to-br from-brown-deep via-brown-dark to-brown py-24 relative overflow-hidden">
-        <div className="dot-texture-sm absolute inset-0 opacity-5 pointer-events-none" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
+      {/* AMENITIES */}
+      <section className="bg-paper py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow text-clay">{t("Why stay with us", "لماذا تختارنا")}</p>
+              <h2 className="font-display mt-5 max-w-2xl text-4xl leading-[1.08] sm:text-5xl">
+                {t("The essentials, taken care of.", "كل ما تحتاجه، متوفر.")}
+              </h2>
+            </div>
+          </Reveal>
+          <ul className="mt-14 grid grid-cols-2 border-s border-t border-line md:grid-cols-4">
+            {amenities.map((item, i) => (
+              <li key={item.en} className="border-b border-e border-line">
+                <Reveal delay={i * 0.04} className="flex h-full flex-col gap-6 p-5 sm:p-7">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-clay-soft text-clay">
+                    <Icon name={item.icon} className="h-5 w-5" />
+                  </span>
+                  <span className="text-base font-semibold leading-snug sm:text-lg">{t(item.en, item.ar)}</span>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-        <div className="relative max-w-3xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="text-xs tracking-[0.3em] text-white/60 uppercase font-medium mb-4">
-              {t("Reserve Your Stay", "احجز إقامتك")}
-            </p>
-            <h2
-              className="font-display text-4xl lg:text-5xl font-bold text-white mb-6"
-            >
-              {t(
-                "Ready to Experience Moroccan Hospitality?",
-                "هل أنت مستعد لتجربة الضيافة المغربية؟"
-              )}
+      {/* ROOM TYPES */}
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow text-clay">{t("Two layouts", "نوعان من الشقق")}</p>
+            <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl">
+              {t("Room for the whole family.", "مساحة تتسع للعائلة كلها.")}
             </h2>
-            <p className="text-white/75 text-xl mb-10 leading-relaxed">
+            <p className="mt-6 text-lg text-ink-soft">
               {t(
-                "Contact us directly to reserve your apartment or inquire about availability. We are here for you around the clock.",
-                "تواصل معنا مباشرة لحجز شقتك أو الاستفسار عن التوافر. نحن هنا لك على مدار الساعة."
+                "Every apartment has a dining area and a washing machine.",
+                "كل شقة تحتوي على مكان لتناول الطعام وغسالة ملابس."
               )}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/212670959747"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-white text-sm tracking-widest uppercase font-medium hover:bg-gold-light transition-colors"
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {roomTypes.map((type, i) => (
+              <Reveal key={type.en} delay={i * 0.1}>
+                <article className="group relative overflow-hidden rounded-3xl bg-night text-white on-dark">
+                  <div className="relative aspect-[4/5] sm:aspect-[5/4]">
+                    <Image
+                      src={type.image}
+                      alt=""
+                      fill
+                      quality={70}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="photo-grade object-cover transition-transform duration-[1.4s] ease-(--ease-soft) group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-night via-night/50 to-transparent" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                    <p className="eyebrow text-brass">{t("Apartment type", "نوع الشقة")}</p>
+                    <h3 className="font-display mt-3 text-3xl sm:text-4xl">{t(type.en, type.ar)}</h3>
+                    <ul className="mt-5 flex flex-wrap gap-2 text-sm">
+                      <li className="flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-2 backdrop-blur">
+                        <Icon name="bed" className="h-4 w-4" />
+                        {t(type.detailEn, type.detailAr)}
+                      </li>
+                      <li className="flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-2 backdrop-blur">
+                        <Icon name="dining" className="h-4 w-4" />
+                        {t("Dining area", "مكان للطعام")}
+                      </li>
+                      <li className="flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-2 backdrop-blur">
+                        <Icon name="washer" className="h-4 w-4" />
+                        {t("Washing machine", "غسالة")}
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* APARTMENT RAIL */}
+      <section className="overflow-hidden bg-paper py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <Reveal className="flex items-end justify-between gap-6">
+            <div>
+              <p className="eyebrow text-clay">{t("The apartments", "الشقق")}</p>
+              <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl">
+                {t("Pick your place.", "اختر شقتك.")}
+              </h2>
+            </div>
+            <div className="hidden gap-2 md:flex">
+              <button
+                type="button"
+                onClick={() => scrollRail(-1)}
+                aria-label={t("Previous apartments", "الشقق السابقة")}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors hover:border-ink"
               >
-                {t("WhatsApp Us", "راسلنا على واتساب")}
+                <Icon name="chevron" className="h-5 w-5 -scale-x-100 rtl:scale-x-100" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollRail(1)}
+                aria-label={t("More apartments", "المزيد من الشقق")}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors hover:border-ink"
+              >
+                <Icon name="chevron" className="h-5 w-5 rtl:-scale-x-100" />
+              </button>
+            </div>
+          </Reveal>
+        </div>
+
+        <div
+          ref={rail}
+          className="no-scrollbar mt-12 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 sm:scroll-px-6 sm:px-6 lg:scroll-px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] lg:px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]"
+        >
+          {apartments.map((apt) => (
+            <Link
+              key={apt.id}
+              href={`/rooms#apartment-${apt.id}`}
+              className="group w-[78%] shrink-0 snap-start sm:w-[44%] lg:w-[30%]"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-stone">
+                <Image
+                  src={apt.coverImage}
+                  alt=""
+                  fill
+                  quality={70}
+                  sizes="(max-width: 640px) 78vw, (max-width: 1024px) 44vw, 30vw"
+                  className="photo-grade object-cover transition-transform duration-[1.4s] ease-(--ease-soft) group-hover:scale-105"
+                />
+                <span className="absolute start-4 top-4 flex items-center gap-1.5 rounded-full bg-night/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+                  <Icon name="images" className="h-3.5 w-3.5" />
+                  {apt.photoCount}
+                </span>
+              </div>
+              <div className="mt-4 flex items-baseline justify-between gap-3">
+                <h3 className="font-display text-2xl">{t(apt.titleEn, apt.titleAr)}</h3>
+                <p className="text-sm text-muted">
+                  <span className="font-semibold text-ink">{apt.priceMAD}</span> {t("MAD / night", "درهم / ليلة")}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* LOCATION */}
+      <section className="on-dark relative overflow-hidden bg-night py-24 text-paper md:py-32">
+        <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-10">
+          <Reveal>
+            <p className="eyebrow text-brass">{t("Location", "الموقع")}</p>
+            <h2 className="font-display mt-5 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
+              {t("In the centre of Zaio.", "في وسط مدينة زايو.")}
+            </h2>
+            <p className="mt-6 max-w-md text-lg text-paper/75">
+              {t(
+                "Find us in the centre of Zaio, in the province of Nador. Open the map for directions.",
+                "تجدوننا في وسط مدينة زايو، إقليم الناظور. افتح الخريطة للاتجاهات."
+              )}
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a href={MAPS_HREF} target="_blank" rel="noopener noreferrer" className="btn bg-paper text-ink hover:bg-white">
+                <Icon name="pin" className="h-5 w-5" />
+                {t("Open in Google Maps", "افتح في خرائط جوجل")}
               </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/40 text-white/80 text-sm tracking-widest uppercase font-medium hover:border-white hover:text-white transition-colors"
-              >
-                {t("View Contact Info", "معلومات الاتصال")}
+              <Link href="/contact" className="btn btn-glass">
+                {t("Contact details", "معلومات الاتصال")}
               </Link>
             </div>
-          </motion.div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <a
+              href={MAPS_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block overflow-hidden rounded-3xl border border-white/10 bg-night-soft p-8 sm:p-10"
+            >
+              <span className="sr-only">{t("Open the location in Google Maps", "افتح الموقع في خرائط جوجل")}</span>
+              <div
+                className="absolute inset-0 opacity-[0.07]"
+                aria-hidden="true"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(var(--color-paper) 1px, transparent 1px), linear-gradient(90deg, var(--color-paper) 1px, transparent 1px)",
+                  backgroundSize: "36px 36px",
+                }}
+              />
+              <div className="relative flex aspect-[4/3] flex-col justify-between">
+                <div className="flex items-center justify-between">
+                  <span className="eyebrow text-paper/60">Zaio</span>
+                  <span className="eyebrow text-paper/60" dir="ltr">MA</span>
+                </div>
+                <div className="flex justify-center">
+                  <span className="relative flex h-16 w-16 items-center justify-center">
+                    <span className="absolute inset-0 animate-ping rounded-full bg-clay/40 motion-reduce:animate-none" />
+                    <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-clay text-white">
+                      <Icon name="pin" className="h-6 w-6" />
+                    </span>
+                  </span>
+                </div>
+                <p dir="ltr" className="font-display text-center text-2xl text-paper/90 sm:text-3xl">
+                  34.9408&deg; N, 2.7335&deg; W
+                </p>
+              </div>
+            </a>
+          </Reveal>
         </div>
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className="py-24 md:py-32">
+        <Reveal className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <div className="checker mx-auto h-3.5 w-28 opacity-80" aria-hidden="true" />
+          <h2 className="font-display mt-10 text-4xl leading-[1.05] sm:text-6xl">
+            {t("Ready to book your stay?", "هل أنت مستعد لحجز إقامتك؟")}
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-ink-soft">
+            {t(
+              "Message or call us to check availability. We are reachable around the clock.",
+              "راسلنا أو اتصل بنا للتحقق من التوافر. نحن متاحون على مدار الساعة."
+            )}
+          </p>
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-clay">
+              <Icon name="whatsapp" className="h-5 w-5" />
+              {t("Book on WhatsApp", "احجز عبر واتساب")}
+            </a>
+            <a href={PHONE_HREF} className="btn btn-line">
+              <Icon name="phone" className="h-5 w-5" />
+              <span dir="ltr">{PHONE_DISPLAY}</span>
+            </a>
+          </div>
+        </Reveal>
       </section>
     </>
   );

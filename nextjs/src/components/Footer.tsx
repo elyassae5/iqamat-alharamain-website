@@ -2,27 +2,33 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
+import {
+  CHECK_IN,
+  CHECK_OUT,
+  MAPS_HREF,
+  navLinks,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  whatsappLink,
+} from "@/lib/site";
+import Logo from "./Logo";
 
 export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-linear-to-br from-brown-deep via-brown-dark to-brown text-white">
-      <div className="h-px bg-linear-to-r from-transparent via-white/30 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Brand */}
-          <div>
-            <div className="mb-4">
-              <p className="font-display text-3xl font-bold text-white mb-1">
-                إقامة الحرمين
-              </p>
-              <p className="text-sm tracking-[0.2em] text-white/50 uppercase">
-                Iqamat Al-Haramain
-              </p>
-            </div>
-            <p className="text-base text-white/70 leading-relaxed">
+    <footer className="on-dark bg-night pb-28 text-paper md:pb-0">
+      <div className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-10">
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Logo className="h-11 w-11 text-paper [--logo-arch:#191815]" />
+            <p lang="ar" className="mt-6 font-[family-name:var(--font-messiri)] text-5xl font-semibold leading-tight">
+              إقامة الحرمين
+            </p>
+            <p lang="en" className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-paper/60">
+              Iqamat Al-Haramain
+            </p>
+            <p className="mt-6 max-w-sm text-paper/75">
               {t(
                 "Your home away from home in the heart of Zaio, Morocco.",
                 "بيتك الثاني في قلب مدينة زايو، المغرب."
@@ -30,84 +36,77 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="text-sm tracking-[0.2em] uppercase text-white/50 font-medium mb-5">
-              {t("Navigation", "التنقل")}
-            </h4>
-            <ul className="space-y-4">
-              {[
-                { href: "/", en: "Home", ar: "الرئيسية" },
-                { href: "/rooms", en: "Rooms", ar: "الغرف" },
-                { href: "/contact", en: "Contact", ar: "اتصل بنا" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-base text-white/75 hover:text-white transition-colors"
-                  >
-                    {t(link.en, link.ar)}
-                  </Link>
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
+            <div>
+              <h2 className="eyebrow text-brass">{t("Explore", "تصفح")}</h2>
+              <ul className="mt-5 space-y-3">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-paper/80 transition-colors hover:text-white">
+                      {t(link.en, link.ar)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="eyebrow text-brass">{t("Contact", "تواصل")}</h2>
+              <ul className="mt-5 space-y-3 text-paper/80">
+                <li>
+                  <a href={PHONE_HREF} className="transition-colors hover:text-white" dir="ltr">
+                    {PHONE_DISPLAY}
+                  </a>
                 </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-sm tracking-[0.2em] uppercase text-white/50 font-medium mb-5">
-              {t("Contact", "تواصل معنا")}
-            </h4>
-            <ul className="space-y-4 text-base text-white/75">
-              <li>
-                <a href="tel:+212670959747" className="hover:text-white transition-colors" dir="ltr">
-                  +212 670 959 747
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/212670959747"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.google.com/maps/place/34.94077411965649,-2.733531736509832"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  {t("Zaio, Morocco", "زايو، المغرب")}
-                </a>
-              </li>
-            </ul>
+                <li>
+                  <a
+                    href={whatsappLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-white"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+                <li>
+                  <a href={MAPS_HREF} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
+                    {t("Zaio, Morocco", "زايو، المغرب")}
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="col-span-2 sm:col-span-1">
+              <h2 className="eyebrow text-brass">{t("Your stay", "إقامتك")}</h2>
+              <dl className="mt-5 space-y-3 text-paper/80">
+                <div className="flex justify-between gap-4 sm:block">
+                  <dt>{t("Check-in", "تسجيل الوصول")}</dt>
+                  <dd className="font-semibold text-paper">{CHECK_IN}</dd>
+                </div>
+                <div className="flex justify-between gap-4 sm:block">
+                  <dt>{t("Check-out", "المغادرة")}</dt>
+                  <dd className="font-semibold text-paper">{CHECK_OUT}</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/50">
+        <div className="mt-16 flex flex-col items-start gap-6 border-t border-white/10 py-8 text-sm text-paper/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {new Date().getFullYear()} Iqamat Al-Haramain.{" "}
+            <span dir="ltr">&copy; {new Date().getFullYear()} Iqamat Al-Haramain.</span>{" "}
             {t("All rights reserved.", "جميع الحقوق محفوظة.")}
-          </p>
-          <p className="tracking-widest uppercase">
-            {t("Zaio, Morocco", "زايو، المغرب")}
           </p>
           <a
             href="https://www.lanceerstudio.nl"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-white/10 hover:bg-white/15 transition-colors rounded-full px-4 py-2"
+            dir="ltr"
+            className="flex items-center gap-2 rounded-full bg-white/[0.08] py-1.5 pe-4 ps-1.5 transition-colors hover:bg-white/15"
           >
-            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-orange-500 text-white text-xs font-bold shrink-0">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
               L
             </span>
-            <span className="text-white/70 text-sm">
-              Powered by{" "}
-              <span className="text-orange-400 font-semibold">Lanceer Studio</span>
+            <span lang="en" className="text-paper/75">
+              Powered by <span className="font-semibold text-orange-400">Lanceer Studio</span>
             </span>
           </a>
         </div>

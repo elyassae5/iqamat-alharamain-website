@@ -1,140 +1,190 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
+import { navLinks, PHONE_DISPLAY, PHONE_HREF, whatsappLink } from "@/lib/site";
+import Icon from "./Icon";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [openPath, setOpenPath] = useState<string | null>(null);
   const { lang, toggleLang, t } = useLanguage();
   const pathname = usePathname();
+  // The menu closes itself on navigation because it is tied to the path it was opened on.
+  const menuOpen = openPath === pathname;
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { href: "/", labelEn: "Home", labelAr: "الرئيسية" },
-    { href: "/rooms", labelEn: "Rooms", labelAr: "الغرف" },
-    { href: "/contact", labelEn: "Contact", labelAr: "اتصل بنا" },
-  ];
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenPath(null);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
+  // Over the home hero photo the bar is transparent with light text.
+  const overPhoto = pathname === "/" && !scrolled && !menuOpen;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-ivory/95 backdrop-blur-md shadow-[0_2px_20px_rgba(37,99,235,0.12)]"
-          : "bg-ivory/85 backdrop-blur-sm"
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between gap-4">
-        {/* Logo */}
-        <Link href="/" className="flex flex-col leading-tight group shrink-0">
-          <span className="font-display text-xl font-bold text-gold transition-colors group-hover:text-gold-dark">
-            إقامة الحرمين
-          </span>
-          <span className="text-[10px] tracking-[0.2em] text-brown-medium uppercase">
-            Iqamat Al-Haramain
-          </span>
-        </Link>
-
-        {/* Desktop nav links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`relative text-sm tracking-wide font-medium transition-colors duration-200 pb-1 group ${
-                    isActive ? "text-gold" : "text-brown hover:text-gold"
-                  }`}
-                >
-                  {t(link.labelEn, link.labelAr)}
-                  <span
-                    className={`absolute bottom-0 left-0 h-px bg-gold transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Right side — always visible */}
-        <div className="flex items-center gap-3 ml-auto md:ml-0">
-          {/* Language toggle — ALWAYS visible */}
-          <button
-            type="button"
-            onClick={toggleLang}
-            className="flex items-center gap-1.5 px-3 py-1.5 border border-gold/30 text-xs tracking-widest text-brown-medium hover:text-gold hover:border-gold transition-colors font-medium uppercase rounded-sm"
-          >
-            <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253" />
-            </svg>
-            {lang === "en" ? "العربية" : "English"}
-          </button>
-
-          {/* Book Now — desktop only */}
-          <a
-            href="https://wa.me/212670959747"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex px-5 py-2.5 bg-gold text-white text-xs tracking-widest uppercase font-medium hover:bg-gold-dark transition-colors duration-200"
-          >
-            {t("Book Now", "احجز الآن")}
-          </a>
-
-          {/* Hamburger — mobile only */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-5 h-0.5 bg-brown transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-brown transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-brown transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile menu — nav links + Book Now only */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-        } bg-ivory border-t border-gold-muted`}
+    <>
+      <a href="#main" className="skip-link">
+        {t("Skip to content", "انتقل إلى المحتوى")}
+      </a>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-500 ${
+          overPhoto
+            ? "text-white on-dark"
+            : "bg-sand/90 text-ink shadow-[0_1px_0_var(--color-line)] backdrop-blur-xl"
+        }`}
       >
-        <div className="px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className={`text-sm font-medium py-1 transition-colors ${
-                pathname === link.href ? "text-gold" : "text-brown hover:text-gold"
+        <nav
+          aria-label={t("Main", "القائمة الرئيسية")}
+          className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 md:h-20 lg:px-10"
+        >
+          <Link
+            href="/"
+            className="flex shrink-0 items-center gap-2.5"
+            aria-label={t("Iqamat Al-Haramain, home", "إقامة الحرمين، الصفحة الرئيسية")}
+          >
+            <Logo
+              className={`h-9 w-9 transition-colors ${overPhoto ? "text-white [--logo-arch:#1d1b18]" : "text-ink"}`}
+            />
+            <span className="flex flex-col leading-none">
+              <span lang="ar" className="font-[family-name:var(--font-messiri)] text-lg font-semibold leading-none">
+                إقامة الحرمين
+              </span>
+              <span lang="en" className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70">
+                Iqamat Al-Haramain
+              </span>
+            </span>
+          </Link>
+
+          <ul className="ms-auto hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`relative rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                      active
+                        ? overPhoto
+                          ? "bg-white/15"
+                          : "bg-ink/[0.07]"
+                        : "opacity-80 hover:opacity-100"
+                    }`}
+                  >
+                    {t(link.en, link.ar)}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="ms-auto flex items-center gap-2 md:ms-4">
+            <button
+              type="button"
+              onClick={toggleLang}
+              aria-label={lang === "en" ? "التبديل إلى العربية" : "Switch to English"}
+              className={`flex h-10 items-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors ${
+                overPhoto
+                  ? "border-white/40 hover:bg-white/15"
+                  : "border-line hover:border-ink"
               }`}
             >
-              {t(link.labelEn, link.labelAr)}
-            </Link>
-          ))}
-          <div className="pt-2 border-t border-gold-muted">
+              <Icon name="globe" className="h-4 w-4 opacity-80" />
+              {lang === "en" ? (
+                <span lang="ar" className="font-[family-name:var(--font-plex-arabic)]">العربية</span>
+              ) : (
+                <span lang="en" className="font-[family-name:var(--font-manrope)]">English</span>
+              )}
+            </button>
+
             <a
-              href="https://wa.me/212670959747"
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex px-5 py-2.5 bg-gold text-white text-xs tracking-widest uppercase font-medium"
+              className={`btn hidden min-h-10! px-5! text-sm md:inline-flex ${
+                overPhoto ? "bg-white text-ink hover:bg-sand" : "btn-ink"
+              }`}
             >
-              {t("Book Now", "احجز الآن")}
+              <Icon name="whatsapp" className="h-4 w-4" />
+              {t("Book now", "احجز الآن")}
             </a>
+
+            <button
+              type="button"
+              onClick={() => setOpenPath(menuOpen ? null : pathname)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              aria-label={menuOpen ? t("Close menu", "إغلاق القائمة") : t("Open menu", "فتح القائمة")}
+              className={`flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
+                overPhoto ? "border-white/40" : "border-line"
+              }`}
+            >
+              <Icon name={menuOpen ? "close" : "menu"} className="h-5 w-5" />
+            </button>
           </div>
-        </div>
-      </div>
-    </header>
+        </nav>
+      </header>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[45] flex flex-col bg-sand px-4 pb-8 pt-24 sm:px-6 md:hidden"
+          >
+            <ul className="flex flex-col">
+              {navLinks.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.06, duration: 0.4 }}
+                  className="border-b border-line"
+                >
+                  <Link
+                    href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className="flex items-center justify-between py-5 font-display text-4xl"
+                  >
+                    {t(link.en, link.ar)}
+                    <Icon name="arrow" className="h-6 w-6 text-clay rtl:-scale-x-100" />
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+            <div className="mt-auto grid gap-3">
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-clay w-full">
+                <Icon name="whatsapp" className="h-5 w-5" />
+                {t("Book on WhatsApp", "احجز عبر واتساب")}
+              </a>
+              <a href={PHONE_HREF} className="btn btn-line w-full">
+                <Icon name="phone" className="h-5 w-5" />
+                <span dir="ltr">{PHONE_DISPLAY}</span>
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
