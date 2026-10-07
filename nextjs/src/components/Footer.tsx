@@ -97,13 +97,13 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             dir="ltr"
-            className="flex items-center gap-2 rounded-full bg-white/[0.08] py-1.5 pe-4 ps-1.5 transition-colors hover:bg-white/15"
+            className="group flex items-center gap-1.5 text-xs text-paper/40 transition-colors hover:text-paper/75"
           >
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
+            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-white/10 text-[9px] font-bold text-paper/60 transition-colors group-hover:bg-orange-500 group-hover:text-white">
               L
             </span>
-            <span lang="en" className="text-paper/75">
-              Powered by <span className="font-semibold text-orange-400">Lanceer Studio</span>
+            <span lang="en">
+              Powered by <span className="font-medium transition-colors group-hover:text-orange-400">Lanceer Studio</span>
             </span>
           </a>
         </div>
